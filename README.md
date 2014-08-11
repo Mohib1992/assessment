@@ -1,7 +1,7 @@
 assessment
 ==========
 
-<h1>To install, Run & Edit this project follow those steps</h1>
+<h1>To install & Run this project</h1>
 <p>
 <h2>Requirement :</h2>
     <ul>
