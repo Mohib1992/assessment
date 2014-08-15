@@ -1,5 +1,5 @@
 <?php
-// develop by moin
+
 class NewsesController extends BaseController{
 	
 	public $restful = true;
