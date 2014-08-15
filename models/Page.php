@@ -1,7 +1,7 @@
 <?php
 
 
-class News extends Eloquent {
+class Page extends Eloquent {
  protected $fillable = array();
 
  private $rules = array();

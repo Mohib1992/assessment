@@ -1,0 +1,1 @@
+<?php\n class Moin extends Eloquent {\n\n\n}?>
