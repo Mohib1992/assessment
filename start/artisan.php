@@ -12,3 +12,5 @@
 */
 
 Artisan::add(new MakeModel);
+Artisan::add(new DeleteModel);
+Artisan::add(new ModelList);
