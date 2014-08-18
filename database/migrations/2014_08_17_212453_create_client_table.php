@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTeamTable extends Migration {
+class CreateClientTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreateTeamTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('team', function(Blueprint $table)
+		Schema::create('Client', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
 			$table->text('description');
+			$table->string('image');
 			$table->timestamps();
 		});
 	}
@@ -28,7 +29,7 @@ class CreateTeamTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('team');
+		Schema::drop('Client');
 	}
 
 }
