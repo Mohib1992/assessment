@@ -19,7 +19,7 @@ Step 2 : Restart your computer.
 
 Step 3 :  Go to C:\wamp\bin\apache\Apache2.4.4\conf (if you use wamp) , open httpd.conf with notepad (any text editor), look for ssl_module , remove the # infront of LoadModule ssl_module modules/mod_ssl.so .
 
-Step 4 : Start the Wamp Server 6. Run CMD as Administrator 
+Step 4 : Start the Wamp Server & Run CMD as Administrator 
 
 Step 5 : In command prompt change directory to C:\wamp\www\ then 
 run this code: composer create-project laravel/laravel project_name
