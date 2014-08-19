@@ -16,6 +16,7 @@ class CreatePostTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title');
+			$table->string('cover_image');
 			$table->text('description');
 			$table->text('tages');
 			$table->enum('status',array('publish','not publish'));

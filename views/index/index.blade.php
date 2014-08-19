@@ -107,36 +107,31 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12"><h2>News and Publications</h2><hr></div>
-
-                </div>
-                <div class="news">
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <img class="img-thumbnail img-responsive" src="images/news_img.jpg">
-                        </div>
-                        <div class="col-sm-11">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad              minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><a class="btn btn-default" href="projects.html">Read More &raquo;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="news">
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <img class="img-thumbnail img-responsive" src="images/news_img1.jpg">
-                        </div>
-                        <div class="col-sm-11">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad              minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><a class="btn btn-default" href="projects.html">Read More &raquo;</a>
-                        </div>
-                    </div>
-                </div>
+                </div>                
 
                 <div class="clearfix hidden-md hidden-lg"></div>
             </div>
-        </div>    
+            
+            	<div class="row">
+                    <div class="col-lg-12"><h2>News and Publications</h2><hr></div>
+                </div>
+                @if(isset($newses))
+                	@foreach($newses as $news)
+		                <div class="news">
+		                    <div class="row">
+		                        <div class="col-sm-1">		                            
+		                            {{ HTML::image($news->cover_image,NULL,array('class'=>'img-thumbnail img-responsive')) }}
+		                        </div>
+		                        <div class="col-sm-11">
+		                            <p>{{ $news->description }}</p>
+		                            {{ HTML::link('news/'.$news->id,'Read More',array('class'=>'btn btn-default'))}}
+		                        </div>
+		                    </div>
+		                </div>
+		              @endforeach
+               	@endif
+                
+        </div>            
         <!-- End Page Content -->
 
         <!--login form -->
@@ -147,34 +142,37 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Login Form</h3>
                     </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal">
+                    <div class="modal-body">                        
+                        {{ Form::open(array('class'=>'form-horizontal')) }}
                             <fieldset>
                                 <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="user-name">Email</label>
-                                    <div class="col-md-5">
-                                        <input id="user-name" name="user-name" type="text" placeholder="Ex: example@abc.com" class="form-control input-md" required="">
-
-                                    </div>
-                                </div>
+                                <div class="form-group">                                    
+                                    {{ Form::label('email','Email',array('class'=>'col-md-4 control-label'))}}
+                                    <div class="col-md-5">                                        
+										{{ Form::input('text','email',Input::old('email'),array('placeholder'=>'"Ex: Example@abc.com"','name'=>'email','class'=>'form-control input-md')) }}
+                                    </div>                                    
+                                    <div class="col-md-5">                    
+               							 {{ $errors->first('email') }}
+                                    </div>                                    
+                                </div>                                
 
                                 <!-- Password input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="password">Password</label>
+                                	{{ Form::label('password','Password',array('class'=>'col-md-4 control-label'))}}       
                                     <div class="col-md-5">
-                                        <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-
+                                    	{{ Form::password('password',array('class'=>'form-control input-md')) }}              
                                     </div>
+                                    <div class="col-md-5">                    
+               							 {{ $errors->first('password') }}
+                                    </div>                            
                                 </div>
 
                             </fieldset>
-                        </form>
+                        {{ Form::close()}}
 
                     </div>
                     <div class="modal-footer">
-                        <a href="insert_forms.html" class="btn btn-primary btn-lg">Submit</a>
-                        <a href="#" class="btn btn-danger btn-lg">Cancel</a>
+                    	{{ HTML::link('','Submit',array('class'=>'btn btn-primary btn-lg','id'=>'login')) }}                        					{{ HTML::link('','Cancel',array('class'=>'btn btn-danger btn-lg', 'id'=>'cancel')) }}               
                     </div>
                 </div>
             </div>

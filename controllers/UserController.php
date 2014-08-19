@@ -82,5 +82,25 @@ class UserController extends \BaseController {
 		//
 	}
 
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function logIn()
+	{
+		//
+		echo "you are loged in";
+	}
+	
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function logOut()
+	{
+		//
+	}
 
 }

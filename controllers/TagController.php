@@ -82,5 +82,13 @@ class TagController extends \BaseController {
 		//
 	}
 
+	public function getAllTags()
+	{
+		return Tag::all();		
+	}
 
+	public function getTotalTag()
+	{
+		return Tag::count();		
+	}
 }

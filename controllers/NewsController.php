@@ -7,12 +7,20 @@ class NewsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	 
+	public $restfull = true;
+	 
 	public function index()
 	{
 		//
+		return View::make('newses.view')				
+				->with('newses',News::all());
 	}
 
-
+	public function getAllNews()
+	{
+		return News::all();		
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

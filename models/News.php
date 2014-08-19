@@ -1,17 +1,8 @@
 <?php
 
-
-class News extends Eloquent {
- protected $fillable = array();
-
- private $rules = array();
-
- public function validate($data){
-
- $validate = Validator::make($data,$rules);
-
- return $validate->passes();
-
- } 
+class News extends Eloquent{
+	
+	public $table = 'news';
+//	public static $accessable = array('title','description','image','status','publication_date');
+	
 }
-?>

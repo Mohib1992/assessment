@@ -13,30 +13,37 @@
 
 Route::get('/', function(){
 	
-	return View::make('index.index');		
+	$news = new NewsController;	
+	return View::make('index.index')	
+		->with('newses',$news->getAllNews());			
 	
 });
-Route::get('/team', function(){
+
+Route::get('/login',function(){
 	
-	return View::make('team.team');		
+	return View::make('admin.admin');
 	
 });
+
+
+Route::get('/team', array('as'=>'team','uses'=>'EmployeeController@index'));
+
 Route::get('/client', function(){
 	
 	return View::make('client.client');		
 	
 });
 
-Route::get('/project', function(){
-	
-	return View::make('project.project');		
-	
-});
+Route::get('/project', array('uses'=>'ProjectController@index'));
 
-Route::get('/blog', function(){
+Route::get('/blog',function(){
 	
-	return View::make('blog.blog');		
-	
+	$posts = new PostController;
+	$tagController = new TagController;
+	return View::make('blog.blog')
+		->with('posts',$posts->allPosts())
+		->with('totalTag',$tagController->getTotalTag())
+		->with('tags',$tagController->getAllTags());			
 });
 
 Route::get('/contact', function(){
@@ -44,8 +51,9 @@ Route::get('/contact', function(){
 	return View::make('contact.contact');		
 	
 });
+
+Route::get('newses',array('as'=>'newses','uses'=>'NewsController@index'));
 /*
-Route::get('newses',array('as'=>'newses','uses'=>'NewsesController@get_index'));
 Route::get('news/{id}',array('as'=>'news', 'uses'=>'NewsesController@view'));
 Route::get('newses/new', array('as'=>'new_news', 'uses'=>'NewsesController@add_new'));
 Route::post('newses/create', array('uses'=>'NewsesController@create'));

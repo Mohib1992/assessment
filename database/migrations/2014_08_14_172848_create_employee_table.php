@@ -17,8 +17,7 @@ class CreateEmployeeTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->text('description');
-			$table->string('image');
-			$table->integer('team_id');
+			$table->string('image');			
 			$table->timestamps();
 		});
 	}

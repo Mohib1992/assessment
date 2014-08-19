@@ -10,6 +10,8 @@ class ProjectController extends \BaseController {
 	public function index()
 	{
 		//
+		return View::make('project.project')
+				->with('projects',Project::all());
 	}
 
 

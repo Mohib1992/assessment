@@ -80,6 +80,19 @@
                 $('.carousel').carousel({
                     interval: 4000
                 });
+                
+                
+                $('#login').click(function(){
+                	
+                	alert(0);
+                	
+                });
+                
+                $('#cancel').click(function(){
+                	
+                	alert(1);
+                	
+                });
             })    
 
         </script>

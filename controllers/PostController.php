@@ -82,5 +82,9 @@ class PostController extends \BaseController {
 		//
 	}
 
+	public function allPosts()
+	{
+		return Post::all();
+	}
 
 }

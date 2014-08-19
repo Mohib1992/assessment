@@ -10,6 +10,8 @@ class EmployeeController extends \BaseController {
 	public function index()
 	{
 		//
+		return View::make('team.team')
+			->with('employees',Employee::all());
 	}
 
 

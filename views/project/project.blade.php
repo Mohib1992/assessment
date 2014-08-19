@@ -11,48 +11,16 @@
         </div>
     </div> 
     <div class="row tpad myTooltip">
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client one" class="thumbnail">
-                <img src="images/client-logo1.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client two" class="thumbnail">
-                <img src="images/client-logo2.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client three" class="thumbnail">
-                <img src="images/client-logo3.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client four" class="thumbnail">
-                <img src="images/client-logo4.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client five" class="thumbnail">
-                <img src="images/client-logo5.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client six" class="thumbnail">
-                <img src="images/client-logo6.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client seven" class="thumbnail">
-                <img src="images/client-logo7.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client eight" class="thumbnail">
-                <img src="images/client-logo8.png" alt="logo">
-            </a>
-        </div>
+    	@if(isset($projects))
+    		@foreach($projects as $project )
+		        <div class="col-sm-6 col-md-3 bpad">
+		            <a href="{{ URL::to('/project/'.$project->id) }}" data-toggle="tooltip" title data-original-title="client one" class="thumbnail">	                
+		                {{ HTML::image($project->cover_image,'logo') }}
+		            </a>
+		        </div>
+	        @endforeach
+        @endif        
     </div>
-
 </div>
 <!-- End Page Content -->
 @stop

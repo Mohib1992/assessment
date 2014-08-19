@@ -1,17 +1,21 @@
 <?php
 
 
-class Project extends Eloquent {
- protected $fillable = array();
+class Project extends Eloquent
+{
+	protected $fillable = array('project_title','description','cover_image','status');	
+	private $rules = array();
+	
+	protected $table = 'project';
 
- private $rules = array();
 
- public function validate($data){
+	public function validate($data)
+	{
 
- $validate = Validator::make($data,$rules);
+		$validate = Validator::make($data,$rules);
 
- return $validate->passes();
+		return $validate->passes();
 
- } 
+	}
 }
 ?>
