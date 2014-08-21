@@ -10,12 +10,11 @@
               <a href="#" class="list-group-item active">
                 Admin Menu
               </a>
-              <a href="#" class="list-group-item">Add Member</a>
-              <a href="#" class="list-group-item">Add Services</a>
-              <a href="#" class="list-group-item">Manage Clients</a>
+              <a href="#" class="list-group-item">Member</a>              
+              <a href="#" class="list-group-item">Client</a>
               <a href="#" class="list-group-item">News</a>
                 <a href="#" class="list-group-item">Projects</a>
-              <a href="#" class="list-group-item">Add New Pages</a>
+              <a href="#" class="list-group-item">Page</a>
             </div>
         </div>
         

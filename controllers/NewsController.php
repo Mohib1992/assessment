@@ -9,6 +9,7 @@ class NewsController extends \BaseController {
 	 */
 	 
 	public $restfull = true;
+
 	 
 	public function index()
 	{
@@ -40,6 +41,25 @@ class NewsController extends \BaseController {
 	public function store()
 	{
 		//
+		$validation = News::validate(Input::all());
+		
+		if($validation->fails()):
+			/*return Redirect::to()
+					->withErrors($validation)
+					->withInput(Input::all());*/
+		else :
+			$news = new News;
+			
+			$news->title = Input::get('title');
+			$news->description = Input::get('description');
+			$news->cover_image = Input::get('cover_image');
+			$news->status = Input::get('status');
+			$news->save();
+			
+			Session::flash('Message','News Created Successfully!');
+			return Redirect::to('');
+		endif;		
+		
 	}
 
 

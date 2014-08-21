@@ -11,16 +11,49 @@
 |
 */
 
-App::before(function($request)
-{
-	//
-});
+App::before(
+	function($request)
+	{
+		//
+		App::singleton('myApp',
+			function()
+			{				
+				$app = new stdClass;				
+				$app->title = "LaraVelFour";				
+				if(Auth::check())
+				{				
+					$app->user = Auth::User();					
+					$app->isLogedin = TRUE;					
+				}				
+				else			
+				{					
+					$app->isLogedin = FALSE;
+					$app->user = FALSE;
+				}				
+				return $app;				
+			});		
+		$app = App::make('myApp');
+
+		View::share('myApp', $app);
+
+	});
 
 
-App::after(function($request, $response)
-{
-	//
-});
+App::after(
+	function($request, $response)
+	{
+		//
+	});
+
+
+View::composer('layouts.default',
+	function($view)
+	{				
+		$menus = Page::select('page_title','id')->get();
+							
+		$view->with('menus', $menus);
+
+	});
 
 /*
 |--------------------------------------------------------------------------
@@ -33,26 +66,28 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
-	if (Auth::guest())
+Route::filter('auth',
+	function()
 	{
-		if (Request::ajax())
+		if(Auth::guest())
 		{
-			return Response::make('Unauthorized', 401);
+			if(Request::ajax())
+			{
+				return Response::make('Unauthorized', 401);
+			}
+			else
+			{
+				return Redirect::guest('login');
+			}
 		}
-		else
-		{
-			return Redirect::guest('login');
-		}
-	}
-});
+	});
 
 
-Route::filter('auth.basic', function()
-{
-	return Auth::basic();
-});
+Route::filter('auth.basic',
+	function()
+	{
+		return Auth::basic();
+	});
 
 /*
 |--------------------------------------------------------------------------
@@ -65,10 +100,11 @@ Route::filter('auth.basic', function()
 |
 */
 
-Route::filter('guest', function()
-{
-	if (Auth::check()) return Redirect::to('/');
-});
+Route::filter('guest',
+	function()
+	{
+		if(Auth::check()) return Redirect::to('/');
+	});
 
 /*
 |--------------------------------------------------------------------------
@@ -81,10 +117,11 @@ Route::filter('guest', function()
 |
 */
 
-Route::filter('csrf', function()
-{
-	if (Session::token() != Input::get('_token'))
+Route::filter('csrf',
+	function()
 	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
-});
+		if(Session::token() != Input::get('_token'))
+		{
+			throw new Illuminate\Session\TokenMismatchException;
+		}
+	});

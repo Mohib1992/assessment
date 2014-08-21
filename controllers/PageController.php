@@ -81,6 +81,11 @@ class PageController extends \BaseController {
 	{
 		//
 	}
-
-
+	
+	public function getPage($id)	
+	{
+		$page = Page::find($id);
+		return View::make('page.page')
+				->with('page',$page);
+	}
 }

@@ -157,6 +157,18 @@ class AllSeeder extends Seeder {
 			'cover_image' => 'images/client-logo7.png',
 			'status' => 'publish'				
 		));
+		
+		$this->command->info('Project create');
+		
+		Page::create(array(
+			'page_title'=> 'Sample page',
+			'page_content'=> 'This is sample page',
+			'video'=> 'none',
+			'image'=> 'none',
+			'status'=> 'publish'		
+		));
+		
+		$this->command->info('Page created');
 	}
 }
 

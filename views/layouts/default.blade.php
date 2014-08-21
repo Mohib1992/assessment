@@ -48,7 +48,9 @@
                         </ul>
                     </li>
                     <li>{{ HTML::link('/blog','Blog') }}</li>
-                    <li>{{ HTML::link('/contact','Contact') }}</li>
+                    <li>{{ HTML::link('/contact','Contact')}}</li>                                       
+                    @include('menus.index')       
+                    <li>{{ HTML::link('/admin','Admin Panel')}}</li>                    
                 </ul>
                 <div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>
             </div>    

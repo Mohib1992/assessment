@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function(){
-	
-	$news = new NewsController;	
-	return View::make('index.index')	
+					
+	$news = new NewsController;		
+	return View::make('index.index')			
 		->with('newses',$news->getAllNews());			
 	
 });
 
-Route::get('/login',function(){
+Route::get('/admin',function(){
 	
 	return View::make('admin.admin');
 	
@@ -51,6 +51,8 @@ Route::get('/contact', function(){
 	return View::make('contact.contact');		
 	
 });
+
+Route::get('/page/{id}',array('as'=>'pages','uses'=>'PageController@getPage'));
 
 Route::get('newses',array('as'=>'newses','uses'=>'NewsController@index'));
 /*
