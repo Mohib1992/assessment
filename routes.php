@@ -54,7 +54,12 @@ Route::get('/contact', function(){
 
 Route::get('/page/{id}',array('as'=>'pages','uses'=>'PageController@getPage'));
 
-Route::get('newses',array('as'=>'newses','uses'=>'NewsController@index'));
+Route::get('/admin/news',array('as'=>'newses','uses'=>'NewsController@index'));
+Route::get('/admin/news/new',function(){
+	
+	return View::make('newses.insert')->with('news',News::all());
+	
+});
 /*
 Route::get('news/{id}',array('as'=>'news', 'uses'=>'NewsesController@view'));
 Route::get('newses/new', array('as'=>'new_news', 'uses'=>'NewsesController@add_new'));
