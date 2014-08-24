@@ -1,10 +1,11 @@
-@extends('layouts.default')
+@extends('layouts.admin')
 
-@section('admin-content')
+@section('content')
 	<h1>Add New News</h1>
         
+     {{ HTML::ul($errors->all()) }}
     
-    {{ Form::open(array('url'=>'newses/create','method'=>'POST')) }}
+    {{ Form::open(array('url'=>'/admin/news/create','method'=>'POST')) }}
 	
 		<p>
             {{ Form::label('title', 'Title') }}</br>

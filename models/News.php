@@ -13,7 +13,7 @@ class News extends Eloquent
 		'status' => 'required'	
 	);
 
-	public function validate($data,$r = null)
+	public static function validate($data,$r = null)
 	{
 		if($r == NULL) :
 		$validate = Validator::make($data,$rules);

@@ -29,7 +29,7 @@ class NewsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		//		
 	}
 
 
@@ -44,9 +44,9 @@ class NewsController extends \BaseController {
 		$validation = News::validate(Input::all());
 		
 		if($validation->fails()):
-			/*return Redirect::to()
+			return Redirect::to('/admin/news/new')
 					->withErrors($validation)
-					->withInput(Input::all());*/
+					->withInput(Input::all());
 		else :
 			$news = new News;
 			
@@ -57,7 +57,7 @@ class NewsController extends \BaseController {
 			$news->save();
 			
 			Session::flash('Message','News Created Successfully!');
-			return Redirect::to('');
+			return Redirect::to('/admin/news');
 		endif;		
 		
 	}
