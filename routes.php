@@ -61,10 +61,10 @@ Route::get('/admin/news/new',function(){
 	
 });
 Route::post('/admin/news/create', array('uses'=>'NewsController@store'));
+Route::delete('/admin/news/delete',array('uses'=>'NewsController@destroy'));
+Route::get('/admin/news/edit/{id}', array('as'=>'edit_news','uses'=>'NewsController@edit'));
 /*
 Route::get('news/{id}',array('as'=>'news', 'uses'=>'NewsesController@view'));
 Route::get('newses/new', array('as'=>'new_news', 'uses'=>'NewsesController@add_new'));
-Route::get('news/{id}/edit', array('as'=>'edit_news','uses'=>'NewsesController@edit'));
 Route::put('newses/update',array('uses'=>'NewsesController@update'));
-Route::delete('newses/delete',array('uses'=>'NewsesController@delete'));
 */

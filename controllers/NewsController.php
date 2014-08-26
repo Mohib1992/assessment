@@ -1,74 +1,96 @@
 <?php
 
-class NewsController extends \BaseController {
+class NewsController extends \BaseController
+{
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	 
+	* Display a listing of the resource.
+	*
+	* @return Response
+	*/
+
 	public $restfull = true;
 
-	 
+
 	public function index()
 	{
 		//
-		return View::make('newses.view')				
-				->with('newses',News::all());
+		return View::make('newses.view')
+		->with('newses',News::all());
 	}
 
 	public function getAllNews()
 	{
-		return News::all();		
+		return News::all();
 	}
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
+	* Show the form for creating a new resource.
+	*
+	* @return Response
+	*/
 	public function create()
 	{
-		//		
+		//
 	}
 
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	* Store a newly created resource in storage.
+	*
+	* @return Response
+	*/
 	public function store()
 	{
 		//
-		$validation = News::validate(Input::all());
+		$messages = array(
+			'title.required'=> 'Title Should not be empty!.',
+			'description.required'=> 'Description Should not be empty!.',			
+			'status.required'=> 'Publish the news or not!.',					
+		);
 		
-		if($validation->fails()):
+		$rules = array(
+			'title'      => 'required',
+			'description'=> 'required',			
+			'status'     => 'required'
+		);
+		
+		$inputs = array(
+			'title' => Input::get('title'),
+			'description' => Input::get('description'),
+			'cover_image' => Input::file('cover_image'),
+			'status' => Input::get('status')
+		
+		);
+		$validator = Validator::make($inputs,$rules,$messages);
+
+
+		if($validator->fails()):
 			return Redirect::to('/admin/news/new')
-					->withErrors($validation)
+					->withErrors($validator)
 					->withInput(Input::all());
 		else :
 			$news = new News;
-			
 			$news->title = Input::get('title');
-			$news->description = Input::get('description');
-			$news->cover_image = Input::get('cover_image');
-			$news->status = Input::get('status');
-			$news->save();
-			
+			$news->description = Input::get('description');								
+			$image = Input::file('cover_image');			
+			$news->cover_image = $image->getClientOriginalName();			
+			$news->status = Input::get('status');					
+			$image->move('images/',$news->cover_image);
+			$news->save();									
+
 			Session::flash('Message','News Created Successfully!');
 			return Redirect::to('/admin/news');
-		endif;		
-		
+		endif;
+
 	}
 
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	* Display the specified resource.
+	*
+	* @param  int  $id
+	* @return Response
+	*/
 	public function show($id)
 	{
 		//
@@ -76,23 +98,26 @@ class NewsController extends \BaseController {
 
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	* Show the form for editing the specified resource.
+	*
+	* @param  int  $id
+	* @return Response
+	*/
 	public function edit($id)
 	{
 		//
+		$news = News::find($id);
+		return View::make('newses.edit')
+				->with('news',$news);
 	}
 
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	* Update the specified resource in storage.
+	*
+	* @param  int  $id
+	* @return Response
+	*/
 	public function update($id)
 	{
 		//
@@ -100,14 +125,15 @@ class NewsController extends \BaseController {
 
 
 	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	* Remove the specified resource from storage.
+	*
+	* @param  int  $id
+	* @return Response
+	*/
 	public function destroy($id)
 	{
 		//
+		var_dump($id);
 	}
 
 

@@ -83,5 +83,25 @@
         {{ HTML::script('js/jquery.js') }}
         <!-- Include all compiled plugins (below), or include individual files as needed -->       
         {{ HTML::script('js/bootstrap.min.js') }}        
+        
+        <script>
+        	$(document).ready(function(){
+        		
+        		$('.play').click(function(){
+        			
+        			$(this).hide();
+        			$('.stop').show();
+        			
+        		});
+        		
+        		$('.stop').click(function(){
+        			
+        			$(this).hide();
+        			$('.play').show();
+        			
+        		});
+        	});
+        	
+        </script>
     </body>
 </html>

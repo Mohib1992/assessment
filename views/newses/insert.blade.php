@@ -5,7 +5,7 @@
         
      {{ HTML::ul($errors->all()) }}
     
-    {{ Form::open(array('url'=>'/admin/news/create','method'=>'POST')) }}
+    {{ Form::open(array('url'=>'/admin/news/create','method'=>'POST','enctype'=>'multipart/form-data')) }}
 	
 		<p>
             {{ Form::label('title', 'Title') }}</br>
@@ -18,13 +18,13 @@
         </p>
         
         <p>
-            {{ Form::label('image', 'Image') }}</br>
-            {{ Form::file('image') }}
+            {{ Form::label('image', 'Cover Image') }}</br>
+            {{ Form::file('cover_image') }}
         </p>
         
         <p>
             {{ Form::label('status', 'Status') }}</br>
-            {{ Form::select('status', array('0'=>'Not Published','1'=>'Published')) }}
+            {{ Form::select('status', array('--Select One--','Not Published','Published'),Input::old('status')) }}
 		</p>    
     
         {{ Form::submit('Create News!') }}

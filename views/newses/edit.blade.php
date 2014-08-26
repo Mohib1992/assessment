@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.admin')
 
 @section('content')
 	<h1>Editing {{ $news->title }}</h1>
@@ -10,7 +10,7 @@
 
 		<p>
             {{ Form::label('publication_date', 'Date of Publication') }}</br>
-            {{ Form::text('publication_date', $news->publication_date, array('disabled')) }}
+            {{ Form::label('publication_date', $news->created_at) }}
 		</p>
             
 		<p>
@@ -24,13 +24,14 @@
         </p>
         
         <p>
-            {{ Form::label('image', 'Image '.$news->image ) }}</br>
+        	{{ HTML::image('images/'.$news->cover_image)}}
+            {{ Form::label('image', 'Cover Image ') }}</br>
             {{ Form::file('image') }}
         </p>
         
         <p>
-            {{ Form::label('status', 'Status') }}</br>
-            {{ Form::select('status', array('0'=>'Not Published','1'=>'Published'), $news->status) }}
+            {{ Form::label('status', 'Status'.ucfirst($news->status)) }}</br>
+            {{ Form::select('status', array('--Select One--','Not Publish','Publish'), ucfirst($news->status)) }}
     	</p>    
         
         {{ Form::hidden('id', $news->id) }}
