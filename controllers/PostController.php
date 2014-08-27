@@ -10,6 +10,8 @@ class PostController extends \BaseController {
 	public function index()
 	{
 		//
+		return View::make('blog.postList')
+				->with('post',Post::all());
 	}
 
 

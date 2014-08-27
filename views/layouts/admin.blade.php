@@ -86,20 +86,35 @@
         
         <script>
         	$(document).ready(function(){
-        		
-        		$('.play').click(function(){
+        		        		
+        		$('.play,.stop').click(function(e){
         			
-        			$(this).hide();
-        			$('.stop').show();
+        			e.preventDefault();
+        			$child = $(this).children();
+        			$class = $child.attr('class');
+        			
+        			if($class == 'glyphicon glyphicon-play')
+        			{
+        				//news alrady published
+						$child.removeClass('glyphicon-play');
+						$child.addClass('glyphicon-stop');
+						$('span.alert').text('News has been Published!').show();
+					}else {					
+						//news not published yet
+						$child.removeClass('glyphicon-stop');
+						$child.addClass('glyphicon-play');	
+						$('span.alert').text('News has been Unpublished!').show();
+					}
+					
+					setTimeout(function(){
+						
+						$('span.alert').hide();
+						
+					},2000);
+        				   		
         			
         		});
         		
-        		$('.stop').click(function(){
-        			
-        			$(this).hide();
-        			$('.play').show();
-        			
-        		});
         	});
         	
         </script>

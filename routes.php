@@ -45,6 +45,7 @@ Route::get('/blog',function(){
 		->with('totalTag',$tagController->getTotalTag())
 		->with('tags',$tagController->getAllTags());			
 });
+Route::get('/admin/post',array('uses'=>'PostController@index'));
 
 Route::get('/contact', function(){
 	
@@ -53,7 +54,11 @@ Route::get('/contact', function(){
 });
 
 Route::get('/page/{id}',array('as'=>'pages','uses'=>'PageController@getPage'));
+Route::get('/admin/page/',array('uses'=>'PageController@index'));
 
+
+
+Route::get('/news/{id}',array('uses'=>'NewsController@getNewsById'));
 Route::get('/admin/news',array('as'=>'newses','uses'=>'NewsController@index'));
 Route::get('/admin/news/new',function(){
 	
@@ -63,8 +68,8 @@ Route::get('/admin/news/new',function(){
 Route::post('/admin/news/create', array('uses'=>'NewsController@store'));
 Route::delete('/admin/news/delete',array('uses'=>'NewsController@destroy'));
 Route::get('/admin/news/edit/{id}', array('as'=>'edit_news','uses'=>'NewsController@edit'));
+Route::put('/admin/news/update',array('as'=>'update_news','uses'=>'NewsController@update'));
 /*
 Route::get('news/{id}',array('as'=>'news', 'uses'=>'NewsesController@view'));
 Route::get('newses/new', array('as'=>'new_news', 'uses'=>'NewsesController@add_new'));
-Route::put('newses/update',array('uses'=>'NewsesController@update'));
 */

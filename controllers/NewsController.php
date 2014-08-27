@@ -18,10 +18,17 @@ class NewsController extends \BaseController
 		return View::make('newses.view')
 		->with('newses',News::all());
 	}
+	
+	public function getNewsById($id)
+	{
+		return View::make('newses.userView')
+				->with('news',News::find($id))
+				->with('archive',News::get(array('id','created_at','updated_at','status')));
+	}
 
 	public function getAllNews()
 	{
-		return News::all();
+		return News::paginate(2);
 	}
 	/**
 	* Show the form for creating a new resource.
@@ -118,9 +125,53 @@ class NewsController extends \BaseController
 	* @param  int  $id
 	* @return Response
 	*/
-	public function update($id)
+	public function update()
 	{
 		//
+		$id = Input::get('id');
+		$messages = array(
+			'title.required'=> 'Title Should not be empty!.',
+			'description.required'=> 'Description Should not be empty!.',			
+			'status.required'=> 'Publish the news or not!.',					
+		);
+		
+		$rules = array(
+			'title'      => 'required',
+			'description'=> 'required',			
+			'status'     => 'required'
+		);
+		
+		$inputs = array(
+			'title' => Input::get('title'),
+			'description' => Input::get('description'),
+			'cover_image' => Input::file('cover_image'),
+			'status' => Input::get('status')
+		
+		);
+		$validator = Validator::make($inputs,$rules,$messages);
+
+
+		if($validator->fails()):
+			return Redirect::to('/admin/news/edit/'.$id)
+					->withErrors($validator)
+					->withInput(Input::all());
+		else :			
+			$news = News::find($id);
+			$news->title = Input::get('title');
+			$news->description = Input::get('description');								
+			$image = Input::file('cover_image');
+			var_dump($image);
+			if(!empty($image)) :
+				$news->cover_image = $image->getClientOriginalName();			
+				$image->move('images/',$news->cover_image);
+			endif;
+				
+			$news->status = Input::get('status');								
+			$news->save();									
+
+			Session::flash('Message','News Updated Successfully!');
+			return Redirect::to('/admin/news');
+		endif;
 	}
 
 

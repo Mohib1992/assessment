@@ -54,7 +54,14 @@ View::composer('layouts.default',
 		$view->with('menus', $menus);
 
 	});
+View::composer('layouts.admin',
+	function($view)
+	{				
+		$menus = Page::select('page_title','id')->get();
+							
+		$view->with('menus', $menus);
 
+	});
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

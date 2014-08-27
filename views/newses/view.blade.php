@@ -1,12 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
+	<span class="alert alert-success" style="display: none;"></span>
 	<a class="btn btn-default" href="{{ URL::to('/admin/news/new') }}" >
   			<span class="glyphicon glyphicon-plus"></span> Add News
 		</a>
 	<div class="col-sm-8">		
-		@if(isset($newses))
-			@foreach($newses as $news)
+		@if(isset($newses))			
+			@foreach($newses as $news)				
 				<a class="btn btn-danger" href="news/delete/{{$news->id}}" >
   					<span class="glyphicon glyphicon-trash"></span>
 				</a>

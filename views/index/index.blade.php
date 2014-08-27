@@ -120,7 +120,7 @@
 		                <div class="news">
 		                    <div class="row">
 		                        <div class="col-sm-1">		                            
-		                            {{ HTML::image($news->cover_image,NULL,array('class'=>'img-thumbnail img-responsive')) }}
+		                            {{ HTML::image('images/'.$news->cover_image,NULL,array('class'=>'img-thumbnail img-responsive')) }}
 		                        </div>
 		                        <div class="col-sm-11">
 		                            <p>{{ $news->description }}</p>

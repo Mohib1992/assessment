@@ -10,6 +10,8 @@ class PageController extends \BaseController {
 	public function index()
 	{
 		//
+		return View::make('page.pageList')
+			 	->with('page',Page::all());
 	}
 
 
