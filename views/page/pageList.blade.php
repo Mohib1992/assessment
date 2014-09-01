@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+				<a class="btn btn-default" href="{{ URL::to('/admin/page/new')}}" >
+  					<span class="glyphicon glyphicon-plus"></span>
+				</a>
 	@if(isset($page))
 		@foreach($page as $p)
 				<a class="btn btn-danger" href="news/delete/{{$p->id}}" >

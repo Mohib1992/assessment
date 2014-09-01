@@ -23,6 +23,7 @@ class PostController extends \BaseController {
 	public function create()
 	{
 		//
+		return View::make('blog.insert');
 	}
 
 
@@ -34,6 +35,42 @@ class PostController extends \BaseController {
 	public function store()
 	{
 		//
+		$messages = array(
+			'title.required'	  => 'Title Should not be empty!.',
+			'description.required'=> 'Description Should not be empty!.',			
+			'tages.required'=> 'Tages Should not be empty!.',			
+			'status.required'	  => 'Publish the news or not?',					
+		);
+		
+		$rules = array(
+			'title'      => 'required',
+			'description'=> 'required',			
+			'tages'		 => 'required',			
+			'cover_image'=> 'required',			
+			'status'     => 'required'
+		);
+				
+		$validator = Validator::make(Input::all(),$rules,$messages);
+
+
+		if($validator->fails()):
+			return Redirect::to('/admin/post/new')
+					->withErrors($validator)
+					->withInput(Input::all());
+		else :
+			$post = new Post;
+			$post->title = Input::get('title');
+			$post->description = Input::get('description');								
+			$image = Input::file('cover_image');			
+			$post->cover_image = $image->getClientOriginalName();			
+			$post->status = Input::get('status');					
+			$image->move('images/',$post->cover_image);
+			$post->tages = Input::get('tages');			
+			$post->save();									
+
+			Session::flash('Message','Post Created Successfully!');
+			return Redirect::to('/admin/post');
+		endif;
 	}
 
 
@@ -46,6 +83,8 @@ class PostController extends \BaseController {
 	public function show($id)
 	{
 		//
+		return View::make('blog.view')
+				->with('post',Post::find($id));				
 	}
 
 
@@ -58,6 +97,7 @@ class PostController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		return View::make('blog.edit')->with('post',Post::find($id));
 	}
 
 
@@ -66,10 +106,50 @@ class PostController extends \BaseController {
 	 *
 	 * @param  int  $id
 	 * @return Response
-	 */
-	public function update($id)
+	 */ 
+	public function update()
 	{
 		//
+		$id = Input::get('id');
+		$messages = array(
+			'title.required'	  => 'Title Should not be empty!.',
+			'description.required'=> 'Description Should not be empty!.',			
+			'tages.required'=> 'Tages Should not be empty!.',			
+			'status.required'	  => 'Publish the news or not?',					
+		);
+		
+		$rules = array(
+			'title'      => 'required',
+			'description'=> 'required',			
+			'tages'		 => 'required',						
+			'status'     => 'required'
+		);
+				
+		$validator = Validator::make(Input::all(),$rules,$messages);
+
+
+		if($validator->fails()):
+			return Redirect::to('/admin/post/edit/'.$id)
+					->withErrors($validator)
+					->withInput(Input::all());
+		else :
+			$post = Post::find($id);
+			$post->title = Input::get('title');
+			$post->description = Input::get('description');										
+			$image = Input::file('cover_image');			
+			
+			if(!empty($image)) :
+				$post->cover_image = $image->getClientOriginalName();			
+				$image->move('images/',$post->cover_image);
+			endif;
+			
+			$post->status = Input::get('status');								
+			$post->tages = Input::get('tages');			
+			$post->save();									
+
+			Session::flash('Message','Post Created Successfully!');
+			return Redirect::to('/admin/post');
+		endif;
 	}
 
 
@@ -82,6 +162,8 @@ class PostController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		$post = Post::find($id);
+		$post->delete();
 	}
 
 	public function allPosts()

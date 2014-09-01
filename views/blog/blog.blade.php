@@ -13,7 +13,7 @@
 	                <hr>
 	                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at }}</p>
 	                <hr>	                
-	                {{ HTML::image($post->cover_image,NULL,array('class'=>'img-responsive'))}}
+	                {{ HTML::image('images/'.$post->cover_image,NULL,array('class'=>'img-responsive'))}}
 	                <hr>
 	                <p>{{ $post->description }}</p>	                
 	                {{ HTML::link('/post/'.$post->id,'Read More ',array('class'=>'btn btn-primary'))}}

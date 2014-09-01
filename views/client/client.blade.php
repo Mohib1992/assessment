@@ -11,48 +11,16 @@
         </div>
     </div> 
     <div class="row tpad myTooltip">
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client one" class="thumbnail">
-                <img src="images/client-logo1.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client two" class="thumbnail">
-                <img src="images/client-logo2.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client three" class="thumbnail">
-                <img src="images/client-logo3.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client four" class="thumbnail">
-                <img src="images/client-logo4.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client five" class="thumbnail">
-                <img src="images/client-logo5.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client six" class="thumbnail">
-                <img src="images/client-logo6.png" alt="logo">
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3 bpad">
-            <a href="#" data-toggle="tooltip" title data-original-title="client seven" class="thumbnail">
-                <img src="images/client-logo7.png" alt="logo">
-            </a>
-        </div>
+       
+       @foreach($client as $c)                                            
         <div class="col-sm-6 col-md-3 bpad">
             <a href="#" data-toggle="tooltip" title data-original-title="client eight" class="thumbnail">
-                <img src="images/client-logo8.png" alt="logo">
+                {{ HTML::image('images/'.$c->image)}}
             </a>
         </div>
+        @endforeach
     </div>
-    <div class="row">
+    <!--<div class="row">
         <div class="col-lg-12">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
@@ -81,7 +49,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 <!-- End Page Content -->
 @stop

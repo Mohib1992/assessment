@@ -13,6 +13,11 @@ class EmployeeController extends \BaseController {
 		return View::make('team.team')
 			->with('employees',Employee::all());
 	}
+	
+	public function EmployeeList()
+	{
+		return View::make('team.list')->with('employee',Employee::all());
+	}
 
 
 	/**
@@ -23,6 +28,8 @@ class EmployeeController extends \BaseController {
 	public function create()
 	{
 		//
+		echo 'initial employee create view';
+		return View::make('team.insert');
 	}
 
 
@@ -34,6 +41,41 @@ class EmployeeController extends \BaseController {
 	public function store()
 	{
 		//
+		echo 'save Employee';
+		$messages = array(
+			'name.required'=> 'Name Should not be empty!.',
+			'description.required'=> 'Description Should not be empty!.',			
+			'image.required'=> 'Image Should not be empty!.',					
+		);
+		
+		$rules = array(
+			'name'      => 'required',
+			'description'=> 'required',			
+			'image'      => 'required'
+		);
+				
+			
+		$validator = Validator::make(Input::all(),$rules,$messages);
+
+
+		if($validator->fails()):
+			return Redirect::to('admin/employee/create')
+					->withErrors($validator)
+					->withInput(Input::all());
+		else :
+			$employee = new Employee;
+			$employee->name = Input::get('name');
+			$employee->description = Input::get('description');								
+			$image = Input::file('image');			
+			$employee->image = $image->getClientOriginalName();										
+			$image->move('images/',$employee->image);
+			$employee->save();									
+
+			Session::flash('Message','Employee Added Successfully!');
+			return Redirect::to('admin/employee/list');
+		endif; 
+
+		
 	}
 
 
@@ -46,6 +88,7 @@ class EmployeeController extends \BaseController {
 	public function show($id)
 	{
 		//
+		echo 'show particuller Employee'.$id;
 	}
 
 
@@ -58,6 +101,11 @@ class EmployeeController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		echo 'initialize edit Employee view'.$id;
+		$employee = Employee::find($id);
+		
+		return View::make('team.edit')
+				->with('employee',$employee);
 	}
 
 
@@ -70,6 +118,39 @@ class EmployeeController extends \BaseController {
 	public function update($id)
 	{
 		//
+		echo 'update employee '.$id;
+		$messages = array(
+			'name.required'=> 'Name Should not be empty!.',
+			'description.required'=> 'Description Should not be empty!.',										
+		);
+		
+		$rules = array(
+			'name'      => 'required',
+			'description'=> 'required',						
+		);
+				
+			
+		$validator = Validator::make(Input::all(),$rules,$messages);
+
+
+		if($validator->fails()):
+			return Redirect::to('admin/employee/'.$id.'/edit')
+					->withErrors($validator)
+					->withInput(Input::all());
+		else :
+			$employee = Employee::find($id);
+			$employee->name = Input::get('name');
+			$employee->description = Input::get('description');								
+			$image = Input::file('image');			
+			$employee->image = $image->getClientOriginalName();										
+			$image->move('images/',$employee->image);
+			$employee->save();									
+
+			Session::flash('Message','Employee Added Successfully!');
+			return Redirect::to('admin/employee/list');
+		endif;
+
+		
 	}
 
 
@@ -82,6 +163,13 @@ class EmployeeController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		echo 'delete employee '.$id;
+		$e = Employee::find($id);
+		$e->delete();
+
+		// redirect
+		Session::flash('message', 'Successfully deleted the Employee!');
+		return Redirect::to('admin/employee/list');
 	}
 
 

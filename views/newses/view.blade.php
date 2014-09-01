@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+ @extends('layouts.admin')
 
 @section('content')
 	<span class="alert alert-success" style="display: none;"></span>

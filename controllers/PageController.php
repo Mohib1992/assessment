@@ -7,6 +7,14 @@ class PageController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	
+	//initializing Regirect Routes
+	
+	private $pageHome = '/admin/page';
+	private $pageEdit = '/admin/page/edit' ;
+	private $pageNew  = '/admin/page/new' ;
+	 
+	 
 	public function index()
 	{
 		//
@@ -23,6 +31,7 @@ class PageController extends \BaseController {
 	public function create()
 	{
 		//
+		return View::make('page.insert');
 	}
 
 
@@ -34,6 +43,55 @@ class PageController extends \BaseController {
 	public function store()
 	{
 		//
+		$messages = array(
+			'page_title.required'=> 'Page Title Should not be empty!.',
+			'page_content.required'=> 'Page Content Should not be empty!.',			
+			'status.required'=> 'Publish the PAge or not!.',					
+		);
+		
+		$rules = array(
+			'paeg_title'  => 'required',
+			'page_content'=> 'required',			
+			'status'      => 'required'
+		);
+		
+		$inputs = array(
+			'title' => Input::get('page_title'),
+			'description' => Input::get('page_content'),			
+			'status' => Input::get('status')
+		
+		);
+		$validator = Validator::make($inputs,$rules,$messages);
+
+
+		if($validator->fails()):
+			return Redirect::to($this->pageNew)
+					->withErrors($validator)
+					->withInput(Input::all());
+		else :
+			$page = new Page;
+			$page->page_title = Input::get('title');
+			$page->page_content = Input::get('description');	
+			$this->uploadStaff($page,'image');										
+			$this->uploadStaff($page,'video');										
+		//	$page->status = Input::get('status');		
+			//$page->save();									
+
+			//Session::flash('Message','News Created Successfully!');
+			//return Redirect::to($this->pageHome);
+		endif;
+		
+	}
+	
+	private function uploadStaff($object,$staffName)
+	{
+		$staff = Input::file($staffName);		
+		if(!empty($staff)) :
+			$object->$staffName = $staff->getClientOriginalName();								
+			$staff->move('images/',$object->$staffName);			
+		endif;
+		
+		//return $object;		
 	}
 
 
@@ -46,6 +104,8 @@ class PageController extends \BaseController {
 	public function show($id)
 	{
 		//
+		return View::make('page.page')
+				->with('page',Page::find($id));
 	}
 
 
@@ -58,6 +118,8 @@ class PageController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		return View::make('blog.edit')
+				->with('page',Page::find($id));
 	}
 
 
@@ -67,9 +129,47 @@ class PageController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
 		//
+		$id = Input::get('id');
+		$messages = array(
+			'page_title.required'=> 'Page Title Should not be empty!.',
+			'page_content.required'=> 'Page Content Should not be empty!.',			
+			'status.required'=> 'Publish the PAge or not!.',					
+		);
+		
+		$rules = array(
+			'paeg_title'  => 'required',
+			'page_content'=> 'required',			
+			'status'      => 'required'
+		);
+		
+		$inputs = array(
+			'title' => Input::get('page_title'),
+			'description' => Input::get('page_content'),			
+			'status' => Input::get('status')
+		
+		);
+		$validator = Validator::make($inputs,$rules,$messages);
+
+
+		if($validator->fails()):
+			return Redirect::to($this->pageEdit)
+					->withErrors($validator)
+					->withInput(Input::all());
+		else :
+			$page = Page::find($id);
+			$page->page_title = Input::get('title');
+			$page->page_content = Input::get('description');	
+			$this->uploadStaff($page,'image');										
+			$this->uploadStaff($page,'video');										
+			$page->status = Input::get('status');		
+			$page->save();									
+
+			Session::flash('Message','Page Updated Successfully!');
+			return Redirect::to($this->pageHome);
+		endif;
 	}
 
 
@@ -82,12 +182,9 @@ class PageController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-	}
-	
-	public function getPage($id)	
-	{
 		$page = Page::find($id);
-		return View::make('page.page')
-				->with('page',$page);
-	}
+		$page->delete();
+		return Redirect::to($this->pageHome);
+		
+	}	
 }
