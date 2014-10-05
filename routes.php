@@ -33,6 +33,7 @@ Route::get('/admin',
 Route::get('/team', array('as'  =>'team','uses'=>'EmployeeController@index'));
 Route::get('/admin/employee/list', array('as'  =>'admin.employee.list','uses'=>'EmployeeController@EmployeeList'));
 Route::resource('/admin/employee','EmployeeController');
+Route::resource('/team','EmployeeController');
 
 Route::get('/client','ClientController@index');
 Route::get('/admin/client/list',array('as'=>'admin.employee.list','uses'=>'ClientController@ClientList'));
@@ -68,12 +69,8 @@ Route::get('/contact',
 
 	});
 
-Route::get('/page/{id}',array('as'  =>'pages','uses'=>'PageController@show'));
-Route::get('/admin/page/',array('uses'=>'PageController@index'));
-Route::get('/admin/page/new',array('uses'=>'PageController@create'));
-Route::post('/admin/page/create',array('uses'=>'PageController@store'));
-Route::get('/admin/page/edit/{id}',array('uses'=>'PageController@edit'));
-Route::put('/admin/page/update',array('uses'=>'PageController@update'));
+Route::resource('/page','PageController');
+Route::resource('/admin/page','PageController');
 
 
 
@@ -95,3 +92,8 @@ Route::put('/admin/news/update',array('as'  =>'update_news','uses'=>'NewsControl
 Route::get('news/{id}',array('as'=>'news', 'uses'=>'NewsesController@view'));
 Route::get('newses/new', array('as'=>'new_news', 'uses'=>'NewsesController@add_new'));
 */
+
+Route::get('/about',function(){
+	
+	return View::make('aboutUs.index');
+});

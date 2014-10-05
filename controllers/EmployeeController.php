@@ -88,7 +88,8 @@ class EmployeeController extends \BaseController {
 	public function show($id)
 	{
 		//
-		echo 'show particuller Employee'.$id;
+		return View::make('team.view')
+				->with('employee',Employee::find($id));
 	}
 
 

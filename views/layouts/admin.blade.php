@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>                
-                {{ HTML::link('/','Strategic Consulting',array('class'=>'navbar-brand')) }}
+                  {{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image','height'=>'50')) }}
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -71,7 +71,7 @@
                 <div class="row">
                     <footer>
                         <div class="pull-right ft_space">
-                            <p>&copy; Strategic Consulting. 2014</p>
+                            <p>&copy; 3Spire. 2014</p>
                         </div>
                     </footer>
                 </div>

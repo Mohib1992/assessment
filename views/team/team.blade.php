@@ -10,9 +10,8 @@
 			<div class="row">
 			@foreach($employees as $employee)
 				<div class="col-sm-4 col-md-4">            
-		            {{ HTML::image($employee->image,null,array('class'=>'img-thumbnail img-responsive')) }}
-		            <h3>{{ $employee->name }}</h3>
-		            <p>{{ $employee->description }}</p>
+		            {{ HTML::image('images/'.$employee->image,$employee->image,array('class'=>'img-thumbnail img-responsive')) }}
+		            <h3>{{ HTML::link('team/'.$employee->id,$employee->name) }}</h3>		            
 		        </div>		
 			@endforeach
 		@endif                    

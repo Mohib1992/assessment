@@ -74,11 +74,11 @@ class PageController extends \BaseController {
 			$page->page_content = Input::get('description');	
 			$this->uploadStaff($page,'image');										
 			$this->uploadStaff($page,'video');										
-		//	$page->status = Input::get('status');		
-			//$page->save();									
+			$page->status = Input::get('status');		
+			$page->save();									
 
-			//Session::flash('Message','News Created Successfully!');
-			//return Redirect::to($this->pageHome);
+			Session::flash('Message','News Created Successfully!');
+			return Redirect::to($this->pageHome);
 		endif;
 		
 	}
@@ -103,9 +103,8 @@ class PageController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-		return View::make('page.page')
-				->with('page',Page::find($id));
+		//		
+		return View::make('page.pages');				
 	}
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Strategic consulting</title>
+        <title>3Spire</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
@@ -26,17 +26,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>                
-                {{ HTML::link('/','Strategic Consulting',array('class'=>'navbar-brand')) }}
+                {{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image','height'=>'50')) }}
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li  class="active">{{ HTML::link('/','Home') }}</li>
+                    <li>{{ HTML::link('/','Home') }}</li>
                     <li>{{ HTML::link('/team','Team') }}</li>
                     <li>{{ HTML::link('/client','Clients') }}</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>{{ HTML::link('/project','Projects') }}</li>
+                            <li><a href="#">IT</a></li>
+                            <li><a href="#">Garments</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -49,8 +50,9 @@
                     </li>
                     <li>{{ HTML::link('/blog','Blog') }}</li>
                     <li>{{ HTML::link('/contact','Contact')}}</li>                                       
-                    @include('menus.index')       
-                    <li>{{ HTML::link('/admin','Admin Panel')}}</li>                    
+                    <li>{{ HTML::link('/about','About Us')}}</li>    
+                    @include('menus.index')                           
+                    <li>{{ HTML::link('/admin','Admin Panel')}}</li>                                                           
                 </ul>
                 <div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>
             </div>    
@@ -65,7 +67,7 @@
                 <div class="row">
                     <footer>
                         <div class="pull-right ft_space">
-                            <p>&copy; Strategic Consulting. 2014</p>
+                            <p>&copy; 3Spire. 2014</p>
                         </div>
                     </footer>
                 </div>
