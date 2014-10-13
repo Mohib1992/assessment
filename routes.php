@@ -97,3 +97,8 @@ Route::get('/about',function(){
 	
 	return View::make('aboutUs.index');
 });
+
+Route::get('/advantage',function(){
+	
+	return View::make('common.advantage');
+});
