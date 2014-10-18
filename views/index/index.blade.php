@@ -70,13 +70,21 @@
                     <img class="img-circle img-responsive" src="images/eco.jpg">
                     <h3>Our Services</h3>                                       
                     <p>Learn about our services
-                    <a class="btn btn-default" href="projects.html">View details &raquo;</a></p>                    
+						<li class="dropdown" style="list-style-type: none;">
+                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">View details &raquo;</b></a>
+                        <ul class="dropdown-menu" >
+                            <li><a href="#">IT</a></li>
+                            <li><a href="#">Garments</a></li>
+                        </ul>
+						</li>
+					</p>                    
                 </div>
                 <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/eco.jpg">
                     <h3>Our Advantages</h3>
                     <p>Due to our geographical situation and professional background we have some advantages. To learn more, please follow the link.</p>					
-                    <p>{{ HTML::link('/advantage','View Details',array('class'=>'btn btn-default dropdown-toggle'))}}</p>
+                    <p>{{ HTML::link('/advantage','View Details',array('class'=>'btn btn-default dropdown-toggle'))}}
+					</p>
                 </div>
                 <div class="col-sm-3 col-md-3">
                     <div class="row">
