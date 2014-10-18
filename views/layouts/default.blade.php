@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>                
-                {{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image','height'=>'50')) }}
+                {{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image navImg','height'=>'50')) }}
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -52,16 +52,17 @@
                     <li>{{ HTML::link('/contact','Contact')}}</li>                                       
                     <li>{{ HTML::link('/about','About Us')}}</li>    
                     @include('menus.index')                           
-                    <li>{{ HTML::link('/admin','Admin Panel')}}</li>                                                           
+                    <!--<li>{{ HTML::link('/admin','Admin Panel')}}</li>-->          
                 </ul>
-                <div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>
+                <!--<div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>-->
             </div>    
         </nav>
         <!-- End Navigation -->
     
     	@yield('content')    	
     
-    	<!-- Footer Area -->  
+    	<!-- Footer Area -->      	
+    	<div class="push"></div>
         <div class="ftr">
             <div class="container">
                 <div class="row">
