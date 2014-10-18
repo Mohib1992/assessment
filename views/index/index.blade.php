@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="container">
+    <!-- Test change -->
             <div class="bs-example">
                 <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
                     <!-- Carousel indicators -->
