@@ -76,7 +76,7 @@
                     <img class="img-circle img-responsive" src="images/eco.jpg">
                     <h3>Our Advantages</h3>
                     <p>Due to our geographical situation and professional background we have some advantages. To learn more, please follow the link.</p>					
-                    <p>{{ HTML::link('/advantage','View Details',array('class'=>'btn btn-default'))}}</p>
+                    <p>{{ HTML::link('/advantage','View Details',array('class'=>'btn btn-default dropdown-toggle'))}}</p>
                 </div>
                 <div class="col-sm-3 col-md-3">
                     <div class="row">

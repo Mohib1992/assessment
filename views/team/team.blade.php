@@ -8,10 +8,12 @@
     </div>
 		@if(isset($employees))
 			<div class="row">
+			<div class="col-sm-2 col-md-2"> 	            
+		        </div>	
 			@foreach($employees as $employee)
 				<div class="col-sm-4 col-md-4">            
-		            {{ HTML::image('images/'.$employee->image,$employee->image,array('class'=>'img-thumbnail img-responsive')) }}
-		            <h3>{{ HTML::link('team/'.$employee->id,$employee->name) }}</h3>		            
+		            {{ HTML::image('images/'.$employee->image,$employee->image,array('class'=>'img-circle img-thumbnail img-responsive')) }}
+		            <h3 id="member_name">{{ HTML::link('team/'.$employee->id,$employee->name) }}</h3>		            
 		        </div>		
 			@endforeach
 		@endif                    

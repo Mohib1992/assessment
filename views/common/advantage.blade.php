@@ -9,7 +9,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<ul>
+				<ol>
 					<li>- Company headquarter located in Vienna, Austria</li>
 
 					<li>- Multilingualism, since both CEOs grew up in Austria and are therefore fluent in German, English,
@@ -31,7 +31,7 @@
 					<li>- Expandable and open to large quantity shipment</li>
 
 					<li>- Quality assurance (certified goods)</li>
-				</ul>
+				</ol>
 			</div>
 		</div>				
 	</div>
