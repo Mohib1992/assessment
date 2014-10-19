@@ -73,8 +73,8 @@
 						<li class="dropdown" style="list-style-type: none;">
                         <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">View details &raquo;</b></a>
                         <ul class="dropdown-menu" >
-                            <li><a href="#">IT</a></li>
-                            <li><a href="#">Garments</a></li>
+                              <li>{{ HTML::link('/services/it','IT') }}</li>                           
+                            <li>{{ HTML::link('/services/garments','Garments') }}</li>                           
                         </ul>
 						</li>
 					</p>                    

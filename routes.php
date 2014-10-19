@@ -102,3 +102,15 @@ Route::get('/advantage',function(){
 	
 	return View::make('common.advantage');
 });
+
+Route::get('/services/it',function(){
+	
+	return View::make('common.it');
+	
+});
+
+Route::get('/services/garments',function(){
+	
+	return View::make('common.garments');
+	
+});

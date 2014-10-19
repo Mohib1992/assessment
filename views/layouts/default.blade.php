@@ -36,8 +36,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">IT</a></li>
-                            <li><a href="#">Garments</a></li>
+                            <li>{{ HTML::link('/services/it','IT') }}</li>                           
+                            <li>{{ HTML::link('/services/garments','Garments') }}</li>                           
                         </ul>
                     </li>
                     <li class="dropdown">
