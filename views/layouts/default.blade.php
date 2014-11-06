@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>3Spire</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
         <!-- Bootstrap -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>        
@@ -30,32 +31,32 @@
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>{{ HTML::link('/','Home') }}</li>                    
-                    <li>{{ HTML::link('/client','Clients') }}</li>
+                    <li>{{ HTML::link('/',trans('menubar.Home')) }}</li>                    
+                    <li>{{ HTML::link('/client',trans('menubar.Clients')) }}</li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('menubar.Services')}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>{{ HTML::link('/services/it','IT') }}</li>                           
-                            <li>{{ HTML::link('/services/garments','Garments') }}</li>                           
+                            <li>{{ HTML::link('/services/it',trans('menubar.IT')) }}</li>                           
+                            <li>{{ HTML::link('/services/garments',trans('menubar.Garments')) }}</li>                           
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('menubar.Social') }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>{{ HTML::link('http://www.facebook.com','FaceBook') }}</li>
                             <li>{{ HTML::secureLink('http://plus.google.com','Google+') }}</li>
                             <li>{{ HTML::link('http://www.linkedin.com','LinkedIn') }}</li>
-                            <li>{{ HTML::link('/blog','Blog') }}</li>
+                            <li>{{ HTML::link('/blog',trans('menubar.Blog')) }}</li>
                         </ul>
                     </li>                                        
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">AboutUs <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('menubar.AboutUs')}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>{{ HTML::link('/about','About Us')}}</li>   
-                            <li>{{ HTML::link('/team','Team') }}</li> 
+                            <li>{{ HTML::link('/about',Lang::get('menubar.AboutUs'))}}</li>   
+                            <li>{{ HTML::link('/team',trans('menubar.Team')) }}</li> 
                         </ul>
                     </li>                    
-                    <li>{{ HTML::link('/contact','Contact')}}</li>                                           
+                    <li>{{ HTML::link('/contact',trans('menubar.Contact'))}}</li>                                           
                     @include('menus.index')                           
                     <!--<li>{{ HTML::link('/admin','Admin Panel')}}</li>-->          
                 </ul>
