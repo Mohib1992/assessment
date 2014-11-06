@@ -55,10 +55,10 @@
                     <!--<li>{{ HTML::link('/admin','Admin Panel')}}</li>-->          
                 </ul>
                 <!--<div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>-->
-            </div>    
-        </nav>
-        <!-- End Navigation -->
-    
+            </div>                
+        </nav>        
+        <!-- End Navigation -->       
+    			
     	@yield('content')    	
     
     	<!-- Footer Area -->      	
@@ -78,6 +78,7 @@
     
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->        
         {{ HTML::script('js/jquery.js') }}
+        {{ HTML::script('js/progressbar.js') }}
         <!-- Include all compiled plugins (below), or include individual files as needed -->       
         {{ HTML::script('js/bootstrap.min.js') }}
         <script>        
