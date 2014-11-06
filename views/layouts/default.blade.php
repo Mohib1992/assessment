@@ -30,8 +30,7 @@
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>{{ HTML::link('/','Home') }}</li>
-                    <li>{{ HTML::link('/team','Team') }}</li>
+                    <li>{{ HTML::link('/','Home') }}</li>                    
                     <li>{{ HTML::link('/client','Clients') }}</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service <b class="caret"></b></a>
@@ -46,11 +45,17 @@
                             <li>{{ HTML::link('http://www.facebook.com','FaceBook') }}</li>
                             <li>{{ HTML::secureLink('http://plus.google.com','Google+') }}</li>
                             <li>{{ HTML::link('http://www.linkedin.com','LinkedIn') }}</li>
+                            <li>{{ HTML::link('/blog','Blog') }}</li>
                         </ul>
-                    </li>
-                    <li>{{ HTML::link('/blog','Blog') }}</li>
-                    <li>{{ HTML::link('/contact','Contact')}}</li>                                       
-                    <li>{{ HTML::link('/about','About Us')}}</li>    
+                    </li>                                        
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">AboutUs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>{{ HTML::link('/about','About Us')}}</li>   
+                            <li>{{ HTML::link('/team','Team') }}</li> 
+                        </ul>
+                    </li>                    
+                    <li>{{ HTML::link('/contact','Contact')}}</li>                                           
                     @include('menus.index')                           
                     <!--<li>{{ HTML::link('/admin','Admin Panel')}}</li>-->          
                 </ul>
