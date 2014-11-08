@@ -5,10 +5,10 @@
 	<div class="container padded">		
 		
 		<div class="row">
-			<div class="col-lg-12"><h2>Information Technology</h2><hr></div>	
+			<div class="col-lg-9 col-md-offset-2"><h2>Information Technology</h2><hr></div>	
 		</div>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-9 col-md-offset-2">
 				<p>Utilizing their IT background and several years of international experience in order to accomplish the vision of helping young, enthusiastic students start up their careers has been one of their many goals. As the global world of outsourcing keeps growing, they realized that a large number of IT businesses had opened up in the Asian subcontinent, 
 				but are being run by big organizations that only hire experienced professionals.</p>
 				<p>3Spire’s IT branch has been founded on the notion to give young 

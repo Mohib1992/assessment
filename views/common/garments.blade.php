@@ -5,10 +5,10 @@
 	<div class="container padded">		
 		
 		<div class="row">
-			<div class="col-lg-12"><h2>Garments</h2><hr></div>	
+			<div class="col-lg-9 col-md-offset-2"><h2>Garments</h2><hr></div>	
 		</div>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-9 col-md-offset-2">
 				<p>Learning about the difficulties garments workers face each day in their working environment led Nuwan Gomes and Robi Rahman to research 
 				more about working conditions in such factories. Their initial thought and aim “We discovered the grievances and decided to try our best to 
 				ensure quality products are been manufactured whilst ensuring health & safety of our employees as well as their development and secure future.”
