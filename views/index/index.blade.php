@@ -6,6 +6,7 @@
 
 <div class="container">
     <!-- Test change -->
+	<div class=" col-lg-9 col-centered">
             <div class="bs-example">
                 <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
                     <!-- Carousel indicators -->
@@ -50,14 +51,15 @@
                     </a>
                 </div>
             </div>
-
+		</div>
         </div>       
 <!-- Page Content -->
-        <div class="container">
+        <div class="container col-centered">
             <div class="row">
-                <div class="col-lg-12"><h2>Know About Us</h2><hr></div>
+                <div class="col-lg-9 col-centered"><h2>Know About Us</h2><hr></div>
             </div>
-            <div class="row">
+            <div class="container">
+			<div class="row">
                 <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/speed.jpg">
                     <h3>Who we are</h3>
@@ -66,7 +68,7 @@
                     </p>
                     <p>{{ HTML::link('/about','View Details',array('class'=>'btn btn-default'))}}</p>
                 </div>
-                <div class="col-sm-3 col-md-3">
+                <!-- <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/eco.jpg">
                     <h3>Our Services</h3>                                       
                     <p>Learn about our services
@@ -78,7 +80,7 @@
                         </ul>
 						</li>
 					</p>                    
-                </div>
+                </div> -->
                 <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/eco.jpg">
                     <h3>Our Advantages</h3>
@@ -122,9 +124,10 @@
 
                 <div class="clearfix hidden-md hidden-lg"></div>
             </div>
+			</div>
             
             	<div class="row">
-                    <div class="col-lg-12"><h2>News and Publications</h2><hr></div>
+                    <div class="col-lg-9"><h2>News and Publications</h2><hr></div>
                 </div>
                 @if(isset($newses))
                 	@foreach($newses as $news)
@@ -133,8 +136,8 @@
 		                        <div class="col-sm-1">		                            
 		                            {{ HTML::image('images/'.$news->cover_image,NULL,array('class'=>'img-thumbnail img-responsive')) }}
 		                        </div>
-		                        <div class="col-sm-11">
-		                            <p>{{ $news->description }}</p>
+		                        <div class="col-sm-8">
+		                            <p style="text-align: justify;">{{ $news->description }}</p>
 		                            {{ HTML::link('news/'.$news->id,'Read More',array('class'=>'btn btn-default'))}}
 		                        </div>
 		                    </div>

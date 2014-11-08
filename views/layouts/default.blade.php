@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>                
-                {{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image navImg','height'=>'50')) }}
+                <div style="margin-left: 10%">{{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image navImg','height'=>'50')) }}</div>
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
                 </ul>
                 <!--<div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>-->
             </div>                
-        </nav>        
+        </nav>
         <!-- End Navigation -->       
     			
     	@yield('content')    	
