@@ -6,7 +6,7 @@
 
 <div class="container">
     <!-- Test change -->
-	<div class=" col-lg-9 col-centered">
+	<div class=" col-lg-9 col-md-offset-2">
             <div class="bs-example">
                 <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
                     <!-- Carousel indicators -->
@@ -56,11 +56,11 @@
 <!-- Page Content -->
         <div class="container col-centered">
             <div class="row">
-                <div class="col-lg-9 col-centered"><h2>Know About Us</h2><hr></div>
+                <div class="col-lg-9 col-md-offset-2"><h2>Know About Us</h2><hr></div>
             </div>
             <div class="container">
 			<div class="row">
-                <div class="col-sm-3 col-md-3">
+                <div class="col-sm-3 col-md-3 col-md-offset-2">
                     <img class="img-circle img-responsive" src="images/speed.jpg">
                     <h3>Who we are</h3>
                     <p>
@@ -127,13 +127,13 @@
 			</div>
             
             	<div class="row">
-                    <div class="col-lg-9"><h2>News and Publications</h2><hr></div>
+                    <div class="col-lg-9 col-md-offset-2"><h2>News and Publications</h2><hr></div>
                 </div>
                 @if(isset($newses))
                 	@foreach($newses as $news)
 		                <div class="news">
 		                    <div class="row">
-		                        <div class="col-sm-1">		                            
+		                        <div class="col-sm-1 col-md-offset-2">		                            
 		                            {{ HTML::image('images/'.$news->cover_image,NULL,array('class'=>'img-thumbnail img-responsive')) }}
 		                        </div>
 		                        <div class="col-sm-8">

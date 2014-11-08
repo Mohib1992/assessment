@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>                
-                <div style="margin-left: 10%">{{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image navImg','height'=>'50')) }}</div>
+                <div>{{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image navImg','height'=>'50')) }}</div>
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
