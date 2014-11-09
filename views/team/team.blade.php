@@ -4,7 +4,7 @@
 
 <div class="container padded">
     <div class="row">
-        <div class="col-lg-12"><h2>Our Team</h2><hr></div>
+        <div class="col-lg-9 col-md-offset-2"><h2>Our Team</h2><hr></div>
     </div>
 		@if(isset($employees))
 			<div class="row">

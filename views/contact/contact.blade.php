@@ -8,14 +8,14 @@
 </div>
 <div class="container">
     <div class="row">    
-        <div class="col-lg-12">
+        <div class="col-lg-9 col-md-offset-2">
     <small><a href="#" style="color:#0000FF;text-align:left">View Larger Map</a></small> 
         </div>
     </div>
 </div>
 <div class="container padded">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-6 col-md-offset-2">
             <h2>Get in touch</h2>
             <hr>
             <p>Need a quote, enquiry about our team creating your App or have a suggestion for the <strong>Move Me</strong> App, we need to hear from you:</p>
@@ -57,7 +57,7 @@
             </div>
         
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <img class="img-circle img-responsive" src="images/office.jpg">
             <hr>
             <address>

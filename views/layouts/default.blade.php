@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>                
-                {{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image navImg','height'=>'50')) }}
+                <div>{{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image navImg','height'=>'50')) }}</div>
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -62,13 +62,12 @@
                 </ul>
                 <!--<div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>-->
             </div>                
-        </nav>        
+        </nav>
         <!-- End Navigation -->       
     			
     	@yield('content')    	
     
-    	<!-- Footer Area -->      	
-    	<div class="push"></div>
+    	<!-- Footer Area -->     
         <div class="ftr">
             <div class="container">
                 <div class="row">
@@ -105,7 +104,48 @@
                 	alert(1);
                 	
                 });
-            })    
+            })
+			
+			$( document ).ready(function() {
+				console.log( "ready!" );
+				var minHight = $(document).height();
+				//$('.ftr').css('margin-top', minHight);
+				console.log( minHight );
+			});
+			
+			// Window load event used just in case window height is dependant upon images
+			$(window).bind("load", function() { 
+				   
+				   var footerHeight = 0,
+					   footerTop = 0,
+					   $footer = $(".ftr");
+					   
+				   positionFooter();
+				   
+				   function positionFooter() {
+				   
+							footerHeight = $footer.height();
+							footerTop = ($(window).scrollTop()+215-footerHeight)+"px";
+				   
+						   if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+							   $footer.css({
+									position: "relative"
+							   }).animate({
+									top: footerTop
+							   })
+						   } else {
+							   $footer.css({
+									position: "static"
+							   })
+						   }
+						   
+				   }
+
+				   $(window)
+						   //.scroll(positionFooter)
+						   //.resize(positionFooter)
+						   
+			});
 
         </script>
     </body>
