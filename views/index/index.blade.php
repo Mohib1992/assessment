@@ -56,17 +56,17 @@
 <!-- Page Content -->
         <div class="container col-centered">
             <div class="row">
-                <div class="col-lg-9 col-md-offset-2"><h2>Know About Us</h2><hr></div>
+                <div class="col-lg-9 col-md-offset-2"><h2>{{ trans('content.KnowAboutUs')}}</h2><hr></div>
             </div>
             <div class="container">
 			<div class="row">
                 <div class="col-sm-3 col-md-3 col-md-offset-2">
                     <img class="img-circle img-responsive" src="images/speed.jpg">
-                    <h3>Who we are</h3>
+                    <h3>{{ trans('content.WhoWeAre') }}</h3>
                     <p>
                     	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.	Lorem ipsum dolor sit amet
                     </p>
-                    <p>{{ HTML::link('/about','View Details',array('class'=>'btn btn-default'))}}</p>
+                    <p>{{ HTML::link('/about',trans('button.VIEW_DETAIL'),array('class'=>'btn btn-default'))}}</p>
                 </div>
                 <!-- <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/eco.jpg">
@@ -83,16 +83,16 @@
                 </div> -->
                 <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/eco.jpg">
-                    <h3>Our Advantages</h3>
+                    <h3>{{ trans('content.OurAdvantages') }}</h3>
                     <p>Due to our geographical situation and professional background we have some advantages. To learn more, please follow the link.</p>					
-                    <p>{{ HTML::link('/advantage','View Details',array('class'=>'btn btn-default dropdown-toggle'))}}
+                    <p>{{ HTML::link('/advantage',trans('button.VIEW_DETAIL'),array('class'=>'btn btn-default dropdown-toggle'))}}
 					</p>
                 </div>
                 <div class="col-sm-3 col-md-3">
                     <div class="row">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h2 class="panel-title" style="color: #fff; font-size: 24px;">Our Experties</h2>
+                                <h2 class="panel-title" style="color: #fff; font-size: 24px;">{{ trans('content.OurExpertise') }}</h2>
                             </div>
                             <div class="panel-body">
                                 <ul>
@@ -109,7 +109,7 @@
                     <div class="row">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h2 class="panel-title" style="color: #fff; font-size: 24px;">Connect With Us</h2>
+                                <h2 class="panel-title" style="color: #fff; font-size: 24px;">{{ trans('content.ContactWithUs')}}</h2>
                             </div>
                             <div class="panel-body" style="background-color=#aaa;">
                                 <p>WE ARE HERE TO HELP YOU DRIVE CHANGE TOGETHER WE WILL SHAPE THE FUTURE.</p>
@@ -127,7 +127,7 @@
 			</div>
             
             	<div class="row">
-                    <div class="col-lg-9 col-md-offset-2"><h2>News and Publications</h2><hr></div>
+                    <div class="col-lg-9 col-md-offset-2"><h2>{{ trans('content.NewAndPublication')}}</h2></h2><hr></div>
                 </div>
                 @if(isset($newses))
                 	@foreach($newses as $news)
@@ -138,7 +138,7 @@
 		                        </div>
 		                        <div class="col-sm-8">
 		                            <p style="text-align: justify;">{{ $news->description }}</p>
-		                            {{ HTML::link('news/'.$news->id,'Read More',array('class'=>'btn btn-default'))}}
+		                            {{ HTML::link('news/'.$news->id,trans('button.READ_MORE'),array('class'=>'btn btn-default'))}}
 		                        </div>
 		                    </div>
 		                </div>

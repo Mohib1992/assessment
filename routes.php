@@ -114,3 +114,9 @@ Route::get('/services/garments',function(){
 	return View::make('common.garments');
 	
 });
+
+Route::get('/language',function(){
+	
+	echo "hi";
+	
+});

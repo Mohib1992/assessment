@@ -72,6 +72,9 @@
             <div class="container">
                 <div class="row">
                     <footer>
+                    <div class="pull-left ft_space">                    
+                            <p>{{ HTML::image('images/us.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}</p>
+                        </div>
                         <div class="pull-right ft_space">
                             <p>&copy; 3Spire. 2014</p>
                         </div>
@@ -92,25 +95,29 @@
                     interval: 4000
                 });
                 
-                
-                $('#login').click(function(){
+                $('.language').on('click',function(){
                 	
-                	alert(0);
-                	
+                	var $text = $(this).attr('name');                	
+                	if($text == 'en'){
+                		$(this).attr('src','images/germany.png');						
+						$(this).attr('name','ger');								
+					}
+                		                	
+                	if($text == 'ger'){						
+                		$(this).attr('src','images/us.png');
+						$(this).attr('name','en');
+					}
+										
                 });
-                
-                $('#cancel').click(function(){
-                	
-                	alert(1);
-                	
-                });
+                                
+                                
             })
 			
 			$( document ).ready(function() {
 				console.log( "ready!" );
 				var minHight = $(document).height();
 				//$('.ftr').css('margin-top', minHight);
-				console.log( minHight );
+				console.log( minHight );										
 			});
 			
 			// Window load event used just in case window height is dependant upon images
