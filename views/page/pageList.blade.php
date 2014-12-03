@@ -1,27 +1,21 @@
 @extends('layouts.admin')
 
 @section('content')
-				<a class="btn btn-default" href="{{ URL::to('/admin/page/create')}}" >
-  					<span class="glyphicon glyphicon-plus"></span>
-				</a>
-	@if(isset($page))
-		@foreach($page as $p)
-				<a class="btn btn-danger" href="news/delete/{{$p->id}}" >
-  					<span class="glyphicon glyphicon-trash"></span>
-				</a>
-				<a class="btn btn-primary" href="{{ URL::to('/admin/page/{'.$p.'}/edit') }}" >
-  					<span class="glyphicon glyphicon-pencil"></span>
-				</a>
-				@if($p->status == 'publish')
-					<a class="btn btn-primary stop" href="#" >
-  						<span class="glyphicon glyphicon-stop"></span>
-					</a>
-				@else 
-					<a class="btn btn-primary play" href="#" >
-	  					<span class="glyphicon glyphicon-play"></span>
-					</a>				
-				@endif
-			{{ $p->page_title }}			
-		@endforeach
-	@endif
+        @include('common.flashmessage')
+        <a class="btn btn-default" href="{{ URL::to('/admin/page/create')}}" >
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+		<ul>
+        @foreach($page as $p)
+            <li>
+                {{ HTML::link('admin/page/'.$p->id.'/edit','Edit',array('class'=>'btn btn-primary'))}}
+               @if($p->id > 6)
+                {{ Form::open(array('url' => 'admin/page/' . $p->id)) }}
+                			{{ Form::hidden('_method', 'DELETE') }}
+                			{{ Form::submit('Delete',array('class'=>'btn btn-danger')) }}
+                		{{ Form::close() }}
+                @endif
+                 {{ $p->getPageTitleEnglish() }}
+            </li>
+        @endforeach
 @stop

@@ -32,6 +32,8 @@ Route::get('/admin',
 
 Route::get('/team', array('as'  =>'team','uses'=>'EmployeeController@index'));
 Route::get('/admin/employee/list', array('as'  =>'admin.employee.list','uses'=>'EmployeeController@EmployeeList'));
+Route::get('/admin/employee/list/{lan}', array('as'  =>'admin.employee.list','uses'=>'EmployeeController@EmployeeList'));
+Route::get('/admin/employee/list/{lan}', array('as'  =>'admin.employee.list','uses'=>'EmployeeController@EmployeeList'));
 Route::resource('/admin/employee','EmployeeController');
 Route::resource('/team','EmployeeController');
 
@@ -46,7 +48,6 @@ Route::get('/project', array('uses'=>'ProjectController@index'));
 Route::get('/blog',
 	function()
 	{
-
 		$posts         = new PostController;
 		$tagController = new TagController;
 		return View::make('blog.blog')
@@ -93,25 +94,34 @@ Route::get('news/{id}',array('as'=>'news', 'uses'=>'NewsesController@view'));
 Route::get('newses/new', array('as'=>'new_news', 'uses'=>'NewsesController@add_new'));
 */
 
+
 Route::get('/about',function(){
-	
-	return View::make('aboutUs.index');
+
+    $page = Page::find(5);
+    return View::make('page.page')
+        ->with('page',$page);
 });
 
 Route::get('/advantage',function(){
-	
-	return View::make('common.advantage');
+
+    $page = Page::find(6);
+    return View::make('page.page')
+        ->with('page',$page);
 });
 
 Route::get('/services/it',function(){
-	
-	return View::make('common.it');
+
+    $page = Page::find(3);
+	return View::make('page.page')
+            ->with('page',$page);
 	
 });
 
 Route::get('/services/garments',function(){
-	
-	return View::make('common.garments');
+
+    $page = Page::find(4);
+    return View::make('page.page')
+        ->with('page',$page);
 	
 });
 

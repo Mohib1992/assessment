@@ -14,9 +14,9 @@ class EmployeeController extends \BaseController {
 			->with('employees',Employee::all());
 	}
 	
-	public function EmployeeList()
+	public function EmployeeList($lan = null)
 	{
-		return View::make('team.list')->with('employee',Employee::all());
+        return View::make('team.list')->with('employee',Employee::all());
 	}
 
 
@@ -28,7 +28,7 @@ class EmployeeController extends \BaseController {
 	public function create()
 	{
 		//
-		echo 'initial employee create view';
+		//echo 'initial employee create view';
 		return View::make('team.insert');
 	}
 
@@ -41,16 +41,18 @@ class EmployeeController extends \BaseController {
 	public function store()
 	{
 		//
-		echo 'save Employee';
+		//echo 'save Employee';
 		$messages = array(
 			'name.required'=> 'Name Should not be empty!.',
 			'description.required'=> 'Description Should not be empty!.',			
-			'image.required'=> 'Image Should not be empty!.',					
+			'descriptionInGer.required'=> 'Description Should not be empty!.',
+			'image.required'=> 'Image Should not be empty!.',
 		);
 		
 		$rules = array(
 			'name'      => 'required',
 			'description'=> 'required',			
+			'descriptionInGer'=> 'required',
 			'image'      => 'required'
 		);
 				
@@ -65,8 +67,31 @@ class EmployeeController extends \BaseController {
 		else :
 			$employee = new Employee;
 			$employee->name = Input::get('name');
-			$employee->description = Input::get('description');								
-			$image = Input::file('image');			
+
+            $english = Language::where('code','eng')->first();
+            $german = Language::where('code','ger')->first();
+
+            $key = new TranslationKey();
+            $key->code = rand();
+            $key->save();
+
+            if(!isset($key->code))
+                    return Redirect::back();
+
+            $translation = new Translation;
+            $translation->translation_key_id = $key->code;
+            $translation->content = Input::get('description');
+            $translation->language_id = $english->id;
+            $translation->save();
+
+            $translation = new Translation;
+            $translation->translation_key_id = $key->code;
+            $translation->content = Input::get('descriptionInGer');
+            $translation->language_id = $german->id;
+            $translation->save();
+
+            $employee->employee_description_id = $key->code;
+            $image = Input::file('image');
 			$employee->image = $image->getClientOriginalName();										
 			$image->move('images/',$employee->image);
 			$employee->save();									
@@ -85,6 +110,7 @@ class EmployeeController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+
 	public function show($id)
 	{
 		//
@@ -102,7 +128,6 @@ class EmployeeController extends \BaseController {
 	public function edit($id)
 	{
 		//
-		echo 'initialize edit Employee view'.$id;
 		$employee = Employee::find($id);
 		
 		return View::make('team.edit')
@@ -119,7 +144,7 @@ class EmployeeController extends \BaseController {
 	public function update($id)
 	{
 		//
-		echo 'update employee '.$id;
+		//echo 'update employee '.$id;
 		$messages = array(
 			'name.required'=> 'Name Should not be empty!.',
 			'description.required'=> 'Description Should not be empty!.',										
@@ -141,11 +166,32 @@ class EmployeeController extends \BaseController {
 		else :
 			$employee = Employee::find($id);
 			$employee->name = Input::get('name');
-			$employee->description = Input::get('description');								
-			$image = Input::file('image');			
-			$employee->image = $image->getClientOriginalName();										
-			$image->move('images/',$employee->image);
-			$employee->save();									
+
+            $english = Language::where('code','eng')->first()->id;
+            $german = Language::where('code','ger')->first()->id;
+
+			$description['eng'] = Input::get('description');
+            $description['ger'] = Input::get('descriptionInGerman');
+
+            $trans = Translation::where('translation_key_id',$employee->employee_description_id)
+                    ->where('language_id',$english)
+                    ->first();
+            $trans->content = $description['eng'];
+            $trans->save();
+
+
+            $trans = Translation::where('translation_key_id',$employee->employee_description_id)
+                    ->where('language_id',$german)
+                    ->first();
+            $trans->content = $description['ger'];
+            $trans->save();
+
+			$image = Input::file('image');
+            if(!empty($image)) :
+			    $employee->image = $image->getClientOriginalName();
+			    $image->move('images/',$employee->image);
+            endif;
+			$employee->save();
 
 			Session::flash('Message','Employee Added Successfully!');
 			return Redirect::to('admin/employee/list');
@@ -166,7 +212,11 @@ class EmployeeController extends \BaseController {
 		//
 		echo 'delete employee '.$id;
 		$e = Employee::find($id);
-		$e->delete();
+
+        TranslationKey::where('code','=',$e->employee_description_id)->delete();
+        Translation::where('translation_key_id','=',$e->employee_description_id)->delete();
+        $e->delete();
+
 
 		// redirect
 		Session::flash('message', 'Successfully deleted the Employee!');

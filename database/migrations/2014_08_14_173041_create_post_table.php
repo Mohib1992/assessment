@@ -18,7 +18,7 @@ class CreatePostTable extends Migration {
 			$table->string('title');
 			$table->string('cover_image');
 			$table->text('description');
-			$table->text('tages');
+			$table->text('tags');
 			$table->enum('status',array('publish','not publish'));
 			$table->integer('user_id');
 			$table->timestamps();

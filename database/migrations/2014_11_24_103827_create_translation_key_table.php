@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePageTable extends Migration {
+class CreateTranslationKeyTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,10 @@ class CreatePageTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('pages', function(Blueprint $table)
+		Schema::create('translation_key', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('page_title_id');
-			$table->text('page_content_id');
-			$table->string('image');
-			$table->string('video');
-			$table->enum('status',array('publish','not publish'));
+            $table->string('code');
 			$table->timestamps();
 		});
 	}
@@ -31,7 +27,7 @@ class CreatePageTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('pages');
+		Schema::drop('translation_key');
 	}
 
 }

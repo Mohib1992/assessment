@@ -5,16 +5,28 @@
         
      {{ HTML::ul($errors->all()) }}
     
-    {{ Form::open(array('url'=>'/admin/page/create','method'=>'POST','enctype'=>'multipart/form-data')) }}
+    {{ Form::open(array('url'=>'/admin/page','method'=>'POST','enctype'=>'multipart/form-data')) }}
 	
 		<p>
             {{ Form::label('title', 'Page Title') }}</br>
             {{ Form::text('page_title', Input::old('page_title')) }}
 		</p>
+
+		<p>
+            {{ Form::label('title', 'Page Title') }}</br>
+            @include('common.german')
+            {{ Form::text('page_title_german', Input::old('page_title_german')) }}
+		</p>
     
         <p>
             {{ Form::label('page_content', 'Page Content') }}</br>
             {{ Form::textarea('page_content', Input::old('page_content')) }}
+        </p>
+
+        <p>
+            {{ Form::label('page_content', 'Page Content') }}</br>
+            @include('common.german')
+            {{ Form::textarea('page_content_german', Input::old('page_content_german')) }}
         </p>
         
         <p>

@@ -49,7 +49,7 @@ App::after(
 View::composer('layouts.default',
 	function($view)
 	{				
-		$menus = Page::select('page_title','id')->get();
+		$menus = Page::select('page_title_id','id')->get();
 							
 		$view->with('menus', $menus);
 
@@ -57,7 +57,7 @@ View::composer('layouts.default',
 View::composer('layouts.admin',
 	function($view)
 	{				
-		$menus = Page::select('page_title','id')->get();
+		$menus = Page::select('page_title_id','id')->get();
 							
 		$view->with('menus', $menus);
 

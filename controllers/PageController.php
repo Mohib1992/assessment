@@ -12,7 +12,7 @@ class PageController extends \BaseController {
 	
 	private $pageHome = '/admin/page';
 	private $pageEdit = '/admin/page/edit' ;
-	private $pageNew  = '/admin/page/new' ;
+	private $pageNew  = '/admin/page/create' ;
 	 
 	 
 	public function index()
@@ -42,22 +42,21 @@ class PageController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
 		$messages = array(
 			'page_title.required'=> 'Page Title Should not be empty!.',
-			'page_content.required'=> 'Page Content Should not be empty!.',			
+			'page_content.required'=> 'Page Content Should not be empty!.',
 			'status.required'=> 'Publish the PAge or not!.',					
 		);
 		
 		$rules = array(
-			'paeg_title'  => 'required',
-			'page_content'=> 'required',			
+			'page_title'  => 'required',
+			'page_content'=> 'required',
 			'status'      => 'required'
 		);
 		
 		$inputs = array(
-			'title' => Input::get('page_title'),
-			'description' => Input::get('page_content'),			
+			'page_title' => Input::get('page_title'),
+			'page_content' => Input::get('page_content'),
 			'status' => Input::get('status')
 		
 		);
@@ -65,17 +64,69 @@ class PageController extends \BaseController {
 
 
 		if($validator->fails()):
-			return Redirect::to($this->pageNew)
+			return Redirect::back()
 					->withErrors($validator)
 					->withInput(Input::all());
 		else :
-			$page = new Page;
-			$page->page_title = Input::get('title');
-			$page->page_content = Input::get('description');	
-			$this->uploadStaff($page,'image');										
+
+            $english = Language::where('code','=','eng')->first();
+            $german = Language::where('code','=','ger')->first();
+
+            $page = new Page;
+            $key = new TranslationKey;
+            $key->code = rand();
+            $key->save();
+
+            //print_r($key);
+
+            // storing english version of title
+            $englishTranslation = new Translation;
+			$englishTranslation->translation_key_id = $key->code;
+            $englishTranslation->content = Input::get('page_title');
+            $englishTranslation->language_id = $english->id;
+            $englishTranslation->save();
+
+            //print_r($englishTranslation);
+
+            // storing german version of title
+            $germanTranslation = new Translation;
+			$germanTranslation->translation_key_id = $key->code;
+            $germanTranslation->content = Input::get('page_title_german');
+            $germanTranslation->language_id = $german->id;
+            $germanTranslation->save();
+           // print_r($germanTranslation);
+
+
+            $page->page_title_id = $key->code;
+
+            $key->code = rand();
+            $key->save();
+           // print_r($key);
+
+            // store english version of description
+            $descriptionEnglish = new Translation;
+            $descriptionEnglish->translation_key_id = $key->code;
+            $descriptionEnglish->content = Input::get('page_content');
+            $descriptionEnglish->language_id = $english->id;
+            $descriptionEnglish->save();
+            //print_r($descriptionEnglish);
+
+            // store english version of description
+            $descriptionGerman = new Translation;
+            $descriptionGerman->translation_key_id = $key->code;
+            $descriptionGerman->content = Input::get('page_content_german');
+            $descriptionGerman->language_id = $german->id;
+            $descriptionGerman->save();
+            //print_r($descriptionGerman);
+
+
+			$page->page_content_id = $key->code;
+
+            $this->uploadStaff($page,'image');
 			$this->uploadStaff($page,'video');										
 			$page->status = Input::get('status');		
-			$page->save();									
+			$page->save();
+            //print_r($page);
 
 			Session::flash('Message','News Created Successfully!');
 			return Redirect::to($this->pageHome);
@@ -85,12 +136,14 @@ class PageController extends \BaseController {
 	
 	private function uploadStaff($object,$staffName)
 	{
+
 		$staff = Input::file($staffName);		
 		if(!empty($staff)) :
 			$object->$staffName = $staff->getClientOriginalName();								
 			$staff->move('images/',$object->$staffName);			
 		endif;
-		
+
+
 		//return $object;		
 	}
 
@@ -103,8 +156,8 @@ class PageController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//		
-		return View::make('page.pages');				
+		return View::make('page.pages')
+                  ->with('page',Page::find($id));
 	}
 
 
@@ -114,10 +167,10 @@ class PageController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		//
-		return View::make('blog.edit')
+    public function edit($id)
+    {
+
+		return View::make('page.edit')
 				->with('page',Page::find($id));
 	}
 
@@ -128,25 +181,27 @@ class PageController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update()
+	public function update($id)
 	{
-		//
-		$id = Input::get('id');
+
 		$messages = array(
 			'page_title.required'=> 'Page Title Should not be empty!.',
 			'page_content.required'=> 'Page Content Should not be empty!.',			
-			'status.required'=> 'Publish the PAge or not!.',					
+			'status.required'=> 'Publish the page or not!.',
 		);
-		
-		$rules = array(
-			'paeg_title'  => 'required',
-			'page_content'=> 'required',			
-			'status'      => 'required'
-		);
+
+        $rules = array(
+            'page_title'  => 'required',
+            'page_content'=> 'required',
+        );
+
+        if($id > 7):
+            echo array_push($_rules,array('status'=>'required'));
+        endif;
 		
 		$inputs = array(
-			'title' => Input::get('page_title'),
-			'description' => Input::get('page_content'),			
+			'page_title' => Input::get('page_title'),
+			'page_content' => Input::get('page_content'),
 			'status' => Input::get('status')
 		
 		);
@@ -154,21 +209,48 @@ class PageController extends \BaseController {
 
 
 		if($validator->fails()):
-			return Redirect::to($this->pageEdit)
+			return Redirect::back()
 					->withErrors($validator)
 					->withInput(Input::all());
 		else :
+
 			$page = Page::find($id);
-			$page->page_title = Input::get('title');
-			$page->page_content = Input::get('description');	
+
+            $english = Language::where('code','eng')->first()->id;
+            $german = Language::where('code','ger')->first()->id;
+
+            $translation = Translation::where('translation_key_id', $page->page_title_id)->where('language_id', $english)->first();
+            $translation->content = Input::get('page_title');
+            $translation->save();
+            //var_dump($translation);
+
+
+            $translation = Translation::where('translation_key_id', $page->page_title_id)->where('language_id', $german)->first();
+            $translation->content = Input::get('page_title_german');
+            $translation->save();
+            //var_dump($translation);
+
+            $translation = Translation::where('translation_key_id', $page->page_content_id)->where('language_id', $english)->first();
+            $translation->content = Input::get('page_content');
+            $translation->save();
+            //var_dump($translation);
+
+            $germanContent = Translation::where('translation_key_id', $page->page_content_id)->where('language_id', $german)->first();
+            $germanContent->content = Input::get('page_content_german');
+            $germanContent->save();
+            //var_dump($translation);
+
+
 			$this->uploadStaff($page,'image');										
 			$this->uploadStaff($page,'video');										
 			$page->status = Input::get('status');		
-			$page->save();									
+			$page->save();
 
 			Session::flash('Message','Page Updated Successfully!');
 			return Redirect::to($this->pageHome);
+
 		endif;
+
 	}
 
 
@@ -180,10 +262,15 @@ class PageController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+
 		$page = Page::find($id);
+        Translation::where('translation_key_id',$page->page_title_id)->delete();
+        Translation::where('translation_key_id',$page->page_content_id)->delete();
+
 		$page->delete();
-		return Redirect::to($this->pageHome);
+
+        Session::flash('Message','Page Delete Successfully');
+		return Redirect::back();
 		
 	}	
 }

@@ -84,7 +84,7 @@
                 <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/eco.jpg">
                     <h3>{{ trans('content.OurAdvantages') }}</h3>
-                    <p>Due to our geographical situation and professional background we have some advantages. To learn more, please follow the link.</p>					
+                    {{ trans('content.OurAdvantagesShort') }}
                     <p>{{ HTML::link('/advantage',trans('button.VIEW_DETAIL'),array('class'=>'btn btn-default dropdown-toggle'))}}
 					</p>
                 </div>
@@ -147,51 +147,6 @@
                 
         </div>            
         <!-- End Page Content -->
-
-        <!--login form -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h3 class="modal-title">Login Form</h3>
-                    </div>
-                    <div class="modal-body">                        
-                        {{ Form::open(array('class'=>'form-horizontal')) }}
-                            <fieldset>
-                                <!-- Text input-->
-                                <div class="form-group">                                    
-                                    {{ Form::label('email','Email',array('class'=>'col-md-4 control-label'))}}
-                                    <div class="col-md-5">                                        
-										{{ Form::input('text','email',Input::old('email'),array('placeholder'=>'"Ex: Example@abc.com"','name'=>'email','class'=>'form-control input-md')) }}
-                                    </div>                                    
-                                    <div class="col-md-5">                    
-               							 {{ $errors->first('email') }}
-                                    </div>                                    
-                                </div>                                
-
-                                <!-- Password input-->
-                                <div class="form-group">
-                                	{{ Form::label('password','Password',array('class'=>'col-md-4 control-label'))}}       
-                                    <div class="col-md-5">
-                                    	{{ Form::password('password',array('class'=>'form-control input-md')) }}              
-                                    </div>
-                                    <div class="col-md-5">                    
-               							 {{ $errors->first('password') }}
-                                    </div>                            
-                                </div>
-
-                            </fieldset>
-                        {{ Form::close()}}
-
-                    </div>
-                    <div class="modal-footer">
-                    	{{ HTML::link('','Submit',array('class'=>'btn btn-primary btn-lg','id'=>'login')) }}                        					{{ HTML::link('','Cancel',array('class'=>'btn btn-danger btn-lg', 'id'=>'cancel')) }}               
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--end of login form -->
 @stop
 
 

@@ -17,45 +17,7 @@
     </head>    
     <body>
     
-    	 <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>                
-                  {{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image','height'=>'50')) }}
-            </div> 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li  class="active">{{ HTML::link('/','Home') }}</li>
-                    <li>{{ HTML::link('/team','Team') }}</li>
-                    <li>{{ HTML::link('/client','Clients') }}</li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>{{ HTML::link('/project','Projects') }}</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>{{ HTML::link('http://www.facebook.com','FaceBook') }}</li>
-                            <li>{{ HTML::secureLink('http://plus.google.com','Google+') }}</li>
-                            <li>{{ HTML::link('http://www.linkedin.com','LinkedIn') }}</li>
-                        </ul>
-                    </li>
-                    <li>{{ HTML::link('/blog','Blog') }}</li>
-                    <li>{{ HTML::link('/contact','Contact')}}</li>                                       
-                    @include('menus.index')       
-                    <li>{{ HTML::link('/admin','Admin Panel')}}</li>                    
-                </ul>
-                <div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>
-            </div>    
-        </nav>
-        <!-- End Navigation -->
+    	 @include('menus.index')
     
     	<div class="container padded">
     
