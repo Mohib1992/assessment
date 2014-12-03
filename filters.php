@@ -38,6 +38,16 @@ App::before(
 
 	});
 
+App::before(function($request)
+{
+    if ( in_array(Request::segment(1), Config::get('app.languages')) ) {
+        Session::put('locale', Request::segment(1));
+        return Redirect::to(substr(Request::path(), 3));
+    }
+    if ( Session::has('locale') ) {
+        App::setLocale(Session::get('locale'));
+    }
+});
 
 App::after(
 	function($request, $response)
