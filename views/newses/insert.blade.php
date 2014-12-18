@@ -5,16 +5,26 @@
         
      {{ HTML::ul($errors->all()) }}
     
-    {{ Form::open(array('url'=>'/admin/news/create','method'=>'POST','enctype'=>'multipart/form-data')) }}
+    {{ Form::open(array('url'=>'/admin/news','method'=>'POST','enctype'=>'multipart/form-data')) }}
 	
 		<p>
             {{ Form::label('title', 'Title') }}</br>
             {{ Form::text('title', Input::old('title')) }}
 		</p>
-    
+        <p>
+                {{ Form::label('title', 'Title') }}</br>
+                <span>(In German)</span>
+                {{ Form::text('titleGerman', Input::old('titleGerman')) }}
+            </p>
+
         <p>
             {{ Form::label('description', 'Description') }}</br>
             {{ Form::textarea('description', Input::old('description')) }}
+        </p>
+        <p>
+            {{ Form::label('description', 'Description') }}</br>
+            <span>(In German)</span>
+            {{ Form::textarea('descriptionGerman', Input::old('descriptionGerman')) }}
         </p>
         
         <p>

@@ -14,7 +14,6 @@
 Route::get('/',
 	function()
 	{
-
 		$news = new NewsController;
 		return View::make('index.index')
 		->with('newses',$news->getAllNews());
@@ -72,10 +71,10 @@ Route::get('/contact',
 
 Route::resource('/page','PageController');
 Route::resource('/admin/page','PageController');
+Route::resource('/admin/news','NewsController');
 
 
-
-
+/*
 Route::get('/news/{id}',array('uses'=>'NewsController@getNewsById'));
 Route::get('/admin/news',array('as'  =>'newses','uses'=>'NewsController@index'));
 Route::get('/admin/news/new',
@@ -89,6 +88,7 @@ Route::post('/admin/news/create', array('uses'=>'NewsController@store'));
 Route::delete('/admin/news/delete',array('uses'=>'NewsController@destroy'));
 Route::get('/admin/news/edit/{id}', array('as'  =>'edit_news','uses'=>'NewsController@edit'));
 Route::put('/admin/news/update',array('as'  =>'update_news','uses'=>'NewsController@update'));
+*/
 /*
 Route::get('news/{id}',array('as'=>'news', 'uses'=>'NewsesController@view'));
 Route::get('newses/new', array('as'=>'new_news', 'uses'=>'NewsesController@add_new'));
@@ -125,8 +125,13 @@ Route::get('/services/garments',function(){
 	
 });
 
-Route::get('/language',function(){
-	
-	echo "hi";
-	
-});
+
+/*
+ *
+ * Routes for menusbar in admin panel
+ */
+
+Route::resource('/admin/menu','MenuController',array(
+
+    'only' => array('index','update')
+));

@@ -27,7 +27,12 @@
                 <div class="row">
                     <footer>
                     <div class="pull-left ft_space">                    
-                            <p>{{ HTML::image('images/us.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}</p>
+                            <p>
+                                {{ HTML::image('images/us.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
+                                {{ HTML::link('/eng','English',array('class'=>'language_text')) }}
+                                {{ HTML::image('images/germany.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
+                                {{ HTML::link('/ger','Germany',array('class'=>'language_text')) }}
+                            </p>
                         </div>
                         <div class="pull-right ft_space">
                             <p>&copy; 3Spire. 2014</p>
@@ -48,21 +53,25 @@
                 $('.carousel').carousel({
                     interval: 4000
                 });
-                
-                $('.language').on('click',function(){
+
+                /*
+                $('.language_text').on('click',function(){
                 	
                 	var $text = $(this).attr('name');                	
                 	if($text == 'eng'){
                 		$(this).attr('src','images/germany.png');						
-						$(this).attr('name','ger');								
+						$(this).attr('name','ger');
+						$('.language_text').text('German');
+
 					}
                 		                	
                 	if($text == 'ger'){						
                 		$(this).attr('src','images/us.png');
 						$(this).attr('name','eng');
+						$('.language_text').text('English');
 					}
 										
-                });
+                });*/
                                 
                                 
             })

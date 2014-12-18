@@ -7,5 +7,6 @@
 	 	{{ HTML::link('/admin/project','Projects',array('class'=>'list-group-item')) }}
 	 	{{ HTML::link('/admin/post','Post',array('class'=>'list-group-item')) }}
 	 	{{ HTML::link('/admin/page','Page',array('class'=>'list-group-item')) }}
+	    {{ HTML::link('/admin/menu','Menu',array('class'=>'list-group-item')) }}
 	</div>
 </div>

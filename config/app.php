@@ -1,7 +1,6 @@
 <?php
 
 return array(
-
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -51,6 +50,8 @@ return array(
 	| to any of the locales which will be supported by the application.
 	|
 	*/
+
+    'languages' => array('eng', 'ger'),
 
 	'locale' => 'eng',
 

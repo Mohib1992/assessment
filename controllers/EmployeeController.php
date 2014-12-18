@@ -5,20 +5,19 @@ class EmployeeController extends \BaseController {
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-		return View::make('team.team')
-			->with('employees',Employee::all());
-	}
+     * @return Response
+     */
+    public function index()
+    {
+        //
+        return View::make('team.team')
+            ->with('employees',Employee::all());
+    }
 	
-	public function EmployeeList($lan = null)
-	{
+    public function EmployeeList($lan = null)
+    {
         return View::make('team.list')->with('employee',Employee::all());
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -55,7 +54,7 @@ class EmployeeController extends \BaseController {
 			'descriptionInGer'=> 'required',
 			'image'      => 'required'
 		);
-				
+
 			
 		$validator = Validator::make(Input::all(),$rules,$messages);
 

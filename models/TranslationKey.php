@@ -7,5 +7,16 @@ class TranslationKey extends Eloquent {
     protected $table = 'translation_key';
 
     private $rules = array();
+
+    public function generateNewKey()
+    {
+        $this->code = rand();
+        $this->save();
+    }
+
+    public function getKey()
+    {
+        return $this->code;
+    }
 }
 ?>

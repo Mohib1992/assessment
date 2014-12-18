@@ -37,7 +37,8 @@ class NewsController extends \BaseController
 	*/
 	public function create()
 	{
-		//
+		//return the view for inserting news
+        return View::make('newses.insert');
 	}
 
 
@@ -76,14 +77,43 @@ class NewsController extends \BaseController
 					->withErrors($validator)
 					->withInput(Input::all());
 		else :
+            $english = Language::where('code','eng')->first()->id;
+            $german = Language::where('code','ger')->first()->id;
 			$news = new News;
-			$news->title = Input::get('title');
-			$news->description = Input::get('description');								
+            $key = new TranslationKey();
+            $key->generateNewKey();
+
+			$news->title_id = $key->getKey();
+            $translation = new Translation();
+            $translation->translation_key_id = $key->getKey();
+            $translation->content = Input::get('title');
+            $translation->language_id = $english;
+            $translation->save();
+
+            $translation->translation_key_id = $key->getKey();
+            $translation->content = Input::get('titleGerman');
+            $translation->language_id = $german;
+            $translation->save();
+
+            $key->generateNewKey();
+			$news->description_id = $key->getKey();
+
+            $translation->translation_key_id = $key->getKey();
+            $translation->content = Input::get('description');
+            $translation->language_id = $english;
+            $translation->save();
+
+            $translation->translation_key_id = $key->getKey();
+            $translation->content = Input::get('descriptionGerman');
+            $translation->language_id = $german;
+            $translation->save();
+
+
 			$image = Input::file('cover_image');			
-			$news->cover_image = $image->getClientOriginalName();			
-			$news->status = Input::get('status');					
+			$news->cover_image = $image->getClientOriginalName();
+			$news->status = Input::get('status');
 			$image->move('images/',$news->cover_image);
-			$news->save();									
+			$news->save();
 
 			Session::flash('Message','News Created Successfully!');
 			return Redirect::to('/admin/news');
@@ -184,7 +214,14 @@ class NewsController extends \BaseController
 	public function destroy($id)
 	{
 		//
-		var_dump($id);
+        $news = News::find($id);
+        Translation::where('translation_key_id',$news->title_id)->delete();
+        Translation::where('translation_key_id',$news->description_id)->delete();
+
+        $news->delete();
+
+        Session::flash('Message','Page Delete Successfully');
+        return Redirect::back();
 	}
 
 
