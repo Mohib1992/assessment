@@ -72,6 +72,7 @@ View::composer('layouts.admin',
 		$view->with('menus', $menus);
 
 	});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

@@ -133,5 +133,5 @@ Route::get('/services/garments',function(){
 
 Route::resource('/admin/menu','MenuController',array(
 
-    'only' => array('index','update')
+    'only' => array('index','update','edit')
 ));

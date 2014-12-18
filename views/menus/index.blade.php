@@ -32,7 +32,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('menubar.AboutUs')}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>{{ HTML::link('/about',Lang::get('menubar.AboutUs'))}}</li>
+                            <li>{{ HTML::link('/about',Lang::get('menubar.AboutUsSub'))}}</li>
                             <li>{{ HTML::link('/team',trans('menubar.Team')) }}</li>
                         </ul>
                     </li>
