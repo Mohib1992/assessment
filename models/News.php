@@ -46,5 +46,16 @@ class News extends Eloquent
         return $content;
     }
 
+    public function getCreateTime()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+    public function scopeGetTitleInEnglish()
+    {
+        //$content = Translation::getTranslation($this->title_id);
+
+    }
+
 
 }

@@ -77,8 +77,7 @@ class NewsController extends \BaseController
 					->withErrors($validator)
 					->withInput(Input::all());
 		else :
-            $english = Language::where('code','eng')->first()->id;
-            $german = Language::where('code','ger')->first()->id;
+
 			$news = new News;
             $key = new TranslationKey();
             $key->generateNewKey();
@@ -87,12 +86,12 @@ class NewsController extends \BaseController
             $translation = new Translation();
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('title');
-            $translation->language_id = $english;
+            $translation->language_id = Language::english();
             $translation->save();
 
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('titleGerman');
-            $translation->language_id = $german;
+            $translation->language_id = Language::german();
             $translation->save();
 
             $key->generateNewKey();
@@ -100,12 +99,12 @@ class NewsController extends \BaseController
 
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('description');
-            $translation->language_id = $english;
+            $translation->language_id = Language::english();
             $translation->save();
 
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('descriptionGerman');
-            $translation->language_id = $german;
+            $translation->language_id = Language::german();
             $translation->save();
 
 
@@ -215,8 +214,8 @@ class NewsController extends \BaseController
 	{
 		//
         $news = News::find($id);
-        Translation::where('translation_key_id',$news->title_id)->delete();
-        Translation::where('translation_key_id',$news->description_id)->delete();
+        Translation::getTranslation($news->title_id)->delete();
+        Translation::getTranslation($news->description_id)->delete();
 
         $news->delete();
 

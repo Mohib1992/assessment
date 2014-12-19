@@ -22,8 +22,9 @@ class Translation extends Eloquent {
      * @param $language ( language of the content )
      * @return translation object
      */
-    public function scopeGetTranslation($query, $key, $language)
+    public function scopeGetTranslation($query, $key, $language = null)
     {
+        if(empty($language)) $language = Language::detectLanguage();
         return $query->where('translation_key_id',$key)
                 ->where('language_id',$language)
                 ->first();

@@ -39,7 +39,7 @@
                 </tr>
                 @foreach($menusEnglish as $eng)
                         <tr>
-                            <td>{{ HTML::link('/admin/menu/'.$eng->translation_key_id.'/edit','Edit',array('class'=>'btn btn-primary')) }}</td>
+                            <td>{{ HTML::link('/admin/menu/'.$eng->translation_key_id.'/edit','Edit',array('class'=>'btn btn-sm btn-primary')) }}</td>
                          </tr>
                 @endforeach
             </table>

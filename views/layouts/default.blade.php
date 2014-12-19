@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">   
 		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<link rel="icon" href="images/2.jpg" type="image/jgp">
         <!-- Bootstrap -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>   

@@ -2,8 +2,8 @@
 
 @section('content')
 	<h1>Add New News</h1>
-        
-     {{ HTML::ul($errors->all()) }}
+
+    @include('newses.partials.error')
     
     {{ Form::open(array('url'=>'/admin/news','method'=>'POST','enctype'=>'multipart/form-data')) }}
 	
@@ -26,16 +26,16 @@
             <span>(In German)</span>
             {{ Form::textarea('descriptionGerman', Input::old('descriptionGerman')) }}
         </p>
-        
+
         <p>
             {{ Form::label('image', 'Cover Image') }}</br>
             {{ Form::file('cover_image') }}
         </p>
-        
+
         <p>
             {{ Form::label('status', 'Status') }}</br>
             {{ Form::select('status', array('--Select One--','Not Published','Published'),Input::old('status')) }}
-		</p>    
+		</p>
     
         {{ Form::submit('Create News!') }}
     
