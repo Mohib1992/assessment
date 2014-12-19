@@ -28,22 +28,17 @@ class News extends Eloquent
 
     public function autoTitleTranslation()
     {
-        $id = Language::where('code',App::getLocale())->first()->id;
-        echo $id;
         try {
-            $content = Translation::where('translation_key_id', $this->title_id)
-                    ->first();
+
+            $content = Translation::getTranslation($this->title_id,Language::english())->content;
+
         }catch (Exception $e){
 
             $content = 'No Translation found';
-            /*
-            $id = Language::where('code','eng')->first()->id;
-            $content = Translation::where('translation_key_id', $this->title_id)
-                ->where('language_id', $id)->first();
-            */
+
         }
 
-        return $content;
+        return $content = $this->title_id;
     }
 
     public function getCreateTime()

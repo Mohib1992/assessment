@@ -84,16 +84,20 @@ class NewsController extends \BaseController
 
 			$news->title_id = $key->getKey();
             $translation = new Translation();
-            $translation->translation_key_id = $key->getKey();
+			$translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('title');
             $translation->language_id = Language::english();
             $translation->save();
+			echo $translation;
 
+			$translation = new Translation();
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('titleGerman');
             $translation->language_id = Language::german();
             $translation->save();
+			echo $translation;
 
+			$translation = new Translation();
             $key->generateNewKey();
 			$news->description_id = $key->getKey();
 
@@ -101,21 +105,27 @@ class NewsController extends \BaseController
             $translation->content = Input::get('description');
             $translation->language_id = Language::english();
             $translation->save();
+			echo $translation;
 
+			$translation = new Translation();
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('descriptionGerman');
             $translation->language_id = Language::german();
             $translation->save();
+			echo $translation;
 
-
-			$image = Input::file('cover_image');			
+			/*
+			$image = Input::file('cover_image');
 			$news->cover_image = $image->getClientOriginalName();
 			$news->status = Input::get('status');
 			$image->move('images/',$news->cover_image);
+			*/
 			$news->save();
+			echo $news;
 
-			Session::flash('Message','News Created Successfully!');
-			return Redirect::to('/admin/news');
+
+			//Session::flash('Message','News Created Successfully!');
+			//return Redirect::to('/admin/news');*/
 		endif;
 
 	}
