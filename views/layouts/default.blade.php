@@ -3,10 +3,11 @@
     <head>
         <title>3Spire</title>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
         <!-- Bootstrap -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>        
+        <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>   
         {{ HTML::style('css/bootstrap.min.css',array('rel'=>'stylesheet','media'=>'screen')) }}
         {{ HTML::style('css/custom.css',array('rel'=>'stylesheet','media'=>'','type'=>'')) }}
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -14,6 +15,9 @@
 		<script src="js/html5shiv.js"></script>
 		{{ HTML::script('js/html5shiv.js')	}}
 		{{ HTML::script('js/respond.min.js')	}}
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
     </head>    
     <body>
@@ -23,7 +27,7 @@
     
     	<!-- Footer Area -->     
         <div class="ftr">
-            <div class="container">
+            <div class="container col-centered">
                 <div class="row">
                     <footer>
                     <div class="pull-left ft_space">                    
@@ -99,9 +103,9 @@
 				   
 						   if ( ($(document.body).height()+footerHeight) < $(window).height()) {
 							   $footer.css({
-									position: "relative"
+									position: "fixed"
 							   }).animate({
-									top: footerTop
+									//top: footerTop
 							   })
 						   } else {
 							   $footer.css({
