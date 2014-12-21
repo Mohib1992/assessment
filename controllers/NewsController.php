@@ -1,5 +1,6 @@
 <?php
 
+
 class NewsController extends \BaseController
 {
 
@@ -78,24 +79,26 @@ class NewsController extends \BaseController
 					->withInput(Input::all());
 		else :
 
+			$log = new LogController('News','feature.log');
 			$news = new News;
             $key = new TranslationKey();
             $key->generateNewKey();
 
+			$log->printLog('Start Stack');
 			$news->title_id = $key->getKey();
             $translation = new Translation();
 			$translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('title');
             $translation->language_id = Language::english();
             $translation->save();
-			echo $translation;
+			$log->printLog($translation);
 
 			$translation = new Translation();
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('titleGerman');
             $translation->language_id = Language::german();
             $translation->save();
-			echo $translation;
+			$log->printLog($translation);
 
 			$translation = new Translation();
             $key->generateNewKey();
@@ -105,27 +108,28 @@ class NewsController extends \BaseController
             $translation->content = Input::get('description');
             $translation->language_id = Language::english();
             $translation->save();
-			echo $translation;
+			$log->printLog($translation);
 
 			$translation = new Translation();
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('descriptionGerman');
             $translation->language_id = Language::german();
             $translation->save();
-			echo $translation;
+			$log->printLog($translation);
 
-			/*
 			$image = Input::file('cover_image');
 			$news->cover_image = $image->getClientOriginalName();
 			$news->status = Input::get('status');
 			$image->move('images/',$news->cover_image);
-			*/
+
 			$news->save();
-			echo $news;
+			$log->printLog($news);
+			$log->printLog('End Stack');
 
 
-			//Session::flash('Message','News Created Successfully!');
-			//return Redirect::to('/admin/news');*/
+
+			Session::flash('Message','News Created Successfully!');
+			return Redirect::to('/admin/news');
 		endif;
 
 	}

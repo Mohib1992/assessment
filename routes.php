@@ -135,3 +135,6 @@ Route::resource('/admin/menu','MenuController',array(
 
     'only' => array('index','update','edit')
 ));
+
+
+Route::resource('admin/content','ContentController');
