@@ -17,7 +17,7 @@ class LogController {
     {
         $this->logger = new Logger($channelName);
         if(!file_exists($fileName))
-            fopen($fileName,'W+');
+            fopen($fileName,'w');
 
         $this->logger->pushHandler(new StreamHandler(storage_path().'/logs/'.$fileName,Logger::INFO));
     }
