@@ -3,8 +3,8 @@
     <head>
         <title>3Spire</title>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link rel="icon" href="images/2.jpg" type="image/jgp">
         <!-- Bootstrap -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
@@ -13,7 +13,6 @@
         {{ HTML::style('css/custom.css',array('rel'=>'stylesheet','media'=>'','type'=>'')) }}
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
-		<script src="js/html5shiv.js"></script>
 		{{ HTML::script('js/html5shiv.js')	}}
 		{{ HTML::script('js/respond.min.js')	}}
 		<![endif]-->

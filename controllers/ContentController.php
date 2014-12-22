@@ -34,15 +34,24 @@ class ContentController extends \BaseController {
 	public function store(){
 
 	}
+
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 * @param $language
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id,$language)
 	{
 		//
+		$content = Translation::getTranslation($id,$language)->content;
+
+		if (empty($content)) {
+			$content = Translation::getTranslation($id,Language::english())->content;
+		}
+
+		return $content;
 	}
 
 

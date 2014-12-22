@@ -3,6 +3,15 @@
 
 class Menu
 {
+
+    private $log;
+
+    function __construct()
+    {
+        $this->log = new LogController('menubar channel','menubar.log');
+    }
+
+
     /**
      * @param translation key
      * @return menu name in english
@@ -18,14 +27,14 @@ class Menu
      */
     public function getMenuNameInGermanByKey($key)
     {
-        try{
-
-            $menuName =  Translation::getTranslation($key, Language::german())->content;
-
-        }catch (Exception $ex)
-        {
-            $menuName =  Translation::getTranslation($key, Language::english())->content;
+        $this->log->printLog('START STACK');
+        $menuName =  Translation::getTranslation($key, Language::german())->content;
+        if (empty($menuName)) {
+            $menuName = Translation::getTranslation($key,Language::english())->content;
         }
+
+        $this->log->printLog($menuName);
+        $this->log->printLog('END STACK');
         return $menuName;
 
     }

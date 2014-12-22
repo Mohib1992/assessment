@@ -63,28 +63,13 @@
                 <div class="col-sm-3 col-md-3 col-md-offset-2">
                     <img class="img-circle img-responsive" src="images/speed.jpg">
                     <h3>{{ trans('content.WhoWeAre') }}</h3>
-                    <p>
-                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.	Lorem ipsum dolor sit amet
-                    </p>
+                    <p>{{ trans('content.WhoWeAreShort') }}</p>
                     <p>{{ HTML::link('/about',trans('button.VIEW_DETAIL'),array('class'=>'btn btn-default'))}}</p>
                 </div>
-                <!-- <div class="col-sm-3 col-md-3">
-                    <img class="img-circle img-responsive" src="images/eco.jpg">
-                    <h3>Our Services</h3>                                       
-                    <p>Learn about our services
-						<li class="dropdown" style="list-style-type: none;">
-                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">View details &raquo;</b></a>
-                        <ul class="dropdown-menu" >
-                              <li>{{ HTML::link('/services/it','IT') }}</li>                           
-                            <li>{{ HTML::link('/services/garments','Garments') }}</li>                           
-                        </ul>
-						</li>
-					</p>                    
-                </div> -->
                 <div class="col-sm-3 col-md-3">
                     <img class="img-circle img-responsive" src="images/eco.jpg">
                     <h3>{{ trans('content.OurAdvantages') }}</h3>
-                    {{ trans('content.OurAdvantagesShort') }}
+                    <p>{{ trans('content.OurAdvantagesShort') }}</p>
                     <p>{{ HTML::link('/advantage',trans('button.VIEW_DETAIL'),array('class'=>'btn btn-default dropdown-toggle'))}}
 					</p>
                 </div>
