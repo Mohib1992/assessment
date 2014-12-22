@@ -22,10 +22,10 @@
 	  					<span class="glyphicon glyphicon-play"></span>
 					</a>				
 				@endif
-				{{ HTML::image('images/'.$news->cover_image,null,array('class'=>'news-list')) }}<br />
-				{{ $news->autoTitleTranslation() }}<br />
 				<span class="glyphicon glyphicon-time"> {{ $news->created_at->diffForHumans() }} </span><br />
-				{{ $news->autoDescriptionTranslation() }}<br />
+				{{ HTML::image('images/'.$news->cover_image,null,array('class'=>'news-list')) }}<br />
+				{{ $news->getTitle() }}<br />
+				{{ $news->getDescription() }}<br />
 			@endforeach
 		@endif
 	</div>

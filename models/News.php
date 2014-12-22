@@ -48,9 +48,16 @@ class News extends Eloquent
 
     public function scopeGetTitleInEnglish()
     {
-        //$content = Translation::getTranslation($this->title_id);
-
+        $content = Translation::getTranslation($this->title_id)->content;
+        return $content;
     }
 
-
+    public function scopeGetTitle()
+    {
+        return Translation::getTranslation($this->title_id,Language::detectLanguage())->content;
+    }
+    public function scopeGetDescription()
+    {
+        return Translation::getTranslation($this->title_id,Language::detectLanguage())->content;
+    }
 }

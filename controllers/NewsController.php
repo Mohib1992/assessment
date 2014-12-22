@@ -3,6 +3,9 @@
 
 class NewsController extends \BaseController
 {
+	private $log;
+
+
 
 	/**
 	* Display a listing of the resource.
@@ -11,6 +14,11 @@ class NewsController extends \BaseController
 	*/
 
 	public $restfull = true;
+
+	function __construct()
+	{
+		$this->log = new LogController('News','news.log');
+	}
 
 
 	public function index()
@@ -29,7 +37,18 @@ class NewsController extends \BaseController
 
 	public function getAllNews()
 	{
-		return News::paginate(2);
+		$n = array();
+		foreach (News::paginate(2) as $news)
+		{
+			$n[] = array(
+					'cover_image' => $news->cover_image,
+					'title' => Translation::getTranslation($news->title_id,Language::detectLanguage())->content,
+					'description' =>  Translation::getTranslation($news->description_id,Language::detectLanguage())->content,
+					'id' => $news->id
+				);
+		}
+		return $n;
+
 	}
 	/**
 	* Show the form for creating a new resource.
@@ -79,26 +98,25 @@ class NewsController extends \BaseController
 					->withInput(Input::all());
 		else :
 
-			$log = new LogController('News','feature.log');
 			$news = new News;
             $key = new TranslationKey();
             $key->generateNewKey();
 
-			$log->printLog('Start Stack');
+			$this->log->printLog('Start Stack');
 			$news->title_id = $key->getKey();
             $translation = new Translation();
 			$translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('title');
             $translation->language_id = Language::english();
             $translation->save();
-			$log->printLog($translation);
+			$this->log->printLog($translation);
 
 			$translation = new Translation();
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('titleGerman');
             $translation->language_id = Language::german();
             $translation->save();
-			$log->printLog($translation);
+			$this->log->printLog($translation);
 
 			$translation = new Translation();
             $key->generateNewKey();
@@ -108,14 +126,14 @@ class NewsController extends \BaseController
             $translation->content = Input::get('description');
             $translation->language_id = Language::english();
             $translation->save();
-			$log->printLog($translation);
+			$this->log->printLog($translation);
 
 			$translation = new Translation();
             $translation->translation_key_id = $key->getKey();
             $translation->content = Input::get('descriptionGerman');
             $translation->language_id = Language::german();
             $translation->save();
-			$log->printLog($translation);
+			$this->log->printLog($translation);
 
 			$image = Input::file('cover_image');
 			$news->cover_image = $image->getClientOriginalName();
@@ -123,8 +141,8 @@ class NewsController extends \BaseController
 			$image->move('images/',$news->cover_image);
 
 			$news->save();
-			$log->printLog($news);
-			$log->printLog('End Stack');
+			$this->log->printLog($news);
+			$this->log->printLog('End Stack');
 
 
 
@@ -203,7 +221,7 @@ class NewsController extends \BaseController
 			$news->title = Input::get('title');
 			$news->description = Input::get('description');								
 			$image = Input::file('cover_image');
-			var_dump($image);
+			//var_dump($image);
 			if(!empty($image)) :
 				$news->cover_image = $image->getClientOriginalName();			
 				$image->move('images/',$news->cover_image);

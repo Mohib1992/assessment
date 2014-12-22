@@ -15,8 +15,20 @@ Route::get('/',
 	function()
 	{
 		$news = new NewsController;
+
+		/*
+		foreach ($news->getAllNews() as $n) {
+
+			foreach($n as $k)
+			{
+				echo $k;
+			}
+		}*/
+
+
 		return View::make('index.index')
-		->with('newses',$news->getAllNews());
+			->with('newses',$news->getAllNews());
+
 
 	});
 

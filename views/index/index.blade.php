@@ -110,23 +110,33 @@
                 <div class="clearfix hidden-md hidden-lg"></div>
             </div>
 			</div>
-            
+                @if(isset($newses))
             	<div class="row">
                     <div class="col-lg-9 col-md-offset-2"><h2>{{ trans('content.NewAndPublication')}}</h2></h2><hr></div>
                 </div>
-                @if(isset($newses))
                 	@foreach($newses as $news)
-		                <div class="news">
-		                    <div class="row">
-		                        <div class="col-sm-1 col-md-offset-2">		                            
-		                            {{ HTML::image('images/'.$news->cover_image,NULL,array('class'=>'img-thumbnail img-responsive')) }}
-		                        </div>
-		                        <div class="col-sm-8">
-		                            <p style="text-align: justify;">{{ $news->description }}</p>
-		                            {{ HTML::link('news/'.$news->id,trans('button.READ_MORE'),array('class'=>'btn btn-default'))}}
-		                        </div>
-		                    </div>
-		                </div>
+                            <div class="news">
+                                <div class="row">
+                                    @foreach($news as $n => $index)
+                                        <div class="col-sm-1 col-md-offset-2">
+                                            @if($n == 'cover_image')
+                                                {{ HTML::image('images/'.$index,null,array('class'=>'img-thumbnail img-responsive')) }}
+                                            @endif
+                                        </div>
+                                        <div class="col-sm-8">
+                                            @if($n == 'title')
+                                                <span>{{ $index }}</span>
+                                            @endif
+                                            @if($n == 'description')
+                                                <p style="text-align: justify;">{{ $index }}</p>
+                                            @endif
+                                            @if($n == 'id')
+                                                {{ HTML::link('news/'.$index,trans('button.READ_MORE'),array('class'=>'btn btn-default'))}}
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
 		              @endforeach
                	@endif
                 
