@@ -35,7 +35,7 @@
                                 {{ HTML::image('images/us.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
                                 {{ HTML::link('/eng','English',array('class'=>'language_text')) }}
                                 {{ HTML::image('images/germany.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
-                                {{ HTML::link('/ger','Germany',array('class'=>'language_text')) }}
+                                {{ HTML::link('/ger','German',array('class'=>'language_text')) }}
                             </p>
                         </div>
                         <div class="pull-right ft_space">
