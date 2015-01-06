@@ -3,12 +3,10 @@
 
 class TranslationKey extends Eloquent {
 
-    protected $fillable = array('id','key');
+    protected $fillable = array('id','code');
     protected $table = 'translation_key';
 
     public $code;
-
-    private $rules = array();
 
     /**
      * Generate new key and store into TranslationKey table

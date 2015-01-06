@@ -162,6 +162,8 @@ class NewsController extends \BaseController
 	public function show($id)
 	{
 		//
+		return View::make('newses.show')
+				->with('news',News::find($id));
 	}
 
 
@@ -175,8 +177,14 @@ class NewsController extends \BaseController
 	{
 		//
 		$news = News::find($id);
+		$title['english'] = Translation::getTranslation($news->title_id,Language::english())->content;
+		$description['english'] = Translation::getTranslation($news->description_id,Language::english())->content;
+		$title['german'] = Translation::getTranslation($news->title_id,Language::german())->content;
+		$description['german'] = Translation::getTranslation($news->description_id,Language::german())->content;
 		return View::make('newses.edit')
-				->with('news',$news);
+				->with('news',$news)
+				->with('title',$title)
+				->with('description',$description);
 	}
 
 
@@ -216,11 +224,34 @@ class NewsController extends \BaseController
 			return Redirect::to('/admin/news/edit/'.$id)
 					->withErrors($validator)
 					->withInput(Input::all());
-		else :			
+		else :
+
+
+			$title['english'] = Input::get('titleInEnglish');
+			$title['german'] = Input::get('titleInGerman');
+			$description['english'] = Input::get('descriptionInEnglish');
+			$description['german'] = Input::get('descriptionInGerman');
+
 			$news = News::find($id);
-			$news->title = Input::get('title');
-			$news->description = Input::get('description');								
+
+			$titleInEnglish = Translation::getTranslation($news->title_id,Language::english());
+			$titleInEnglish->content = $title['english'];
+			$titleInEnglish->save();
+
+			$titleInGerman = Translation::getTranslation($news->title_id,Language::german());
+			$titleInGerman->content = $title['german'];
+			$titleInGerman->save();
+
+			$descriptionInEnglish = Translation::getTranslation($news->description_id,Language::english());
+			$descriptionInEnglish->content = $title['german'];
+			$descriptionInEnglish->save();
+
+			$descriptionInGerman = Translation::getTranslation($news->description_id,Language::german());
+			$descriptionInGerman->content = $title['german'];
+			$descriptionInGerman->save();
+
 			$image = Input::file('cover_image');
+
 			//var_dump($image);
 			if(!empty($image)) :
 				$news->cover_image = $image->getClientOriginalName();			

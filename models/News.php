@@ -2,44 +2,44 @@
 
 class News extends Eloquent
 {
-
+    public $fillable = array('title_id','description_id','image','status','publication_date');
 	public $table = 'news';
 	//	public static $accessable = array('title','description','image','status','publication_date');
 
-    public function autoDescriptionTranslation()
-    {
-        $id = Language::where('code',App::getLocale())->first()->id;
-        echo $id;
-        try {
-            $content = Translation::where('translation_key_id', $this->descripiton_id)
-                ->where('language_id', $id)->first()->content;
-        }catch (Exception $e){
+//    public function autoDescriptionTranslation()
+//    {
+//        $id = Language::where('code',App::getLocale())->first()->id;
+//        echo $id;
+//        try {
+//            $content = Translation::where('translation_key_id', $this->descripiton_id)
+//                ->where('language_id', $id)->first()->content;
+//        }catch (Exception $e){
+//
+//            $content = 'No Translation found';
+//            /*
+//            $id = Language::where('code','eng')->first()->id;
+//            $content = Translation::where('translation_key_id', $this->description_id)
+//                ->where('language_id', $id)->first()->content;
+//            */
+//        }
+//
+//        return $content;
+//    }
 
-            $content = 'No Translation found';
-            /*
-            $id = Language::where('code','eng')->first()->id;
-            $content = Translation::where('translation_key_id', $this->description_id)
-                ->where('language_id', $id)->first()->content;
-            */
-        }
-
-        return $content;
-    }
-
-    public function autoTitleTranslation()
-    {
-        try {
-
-            $content = Translation::getTranslation($this->title_id,Language::english())->content;
-
-        }catch (Exception $e){
-
-            $content = 'No Translation found';
-
-        }
-
-        return $content = $this->title_id;
-    }
+//    public function autoTitleTranslation()
+//    {
+//        try {
+//
+//            $content = Translation::getTranslation($this->title_id,Language::english())->content;
+//
+//        }catch (Exception $e){
+//
+//            $content = 'No Translation found';
+//
+//        }
+//
+//        return $content = $this->title_id;
+//    }
 
     public function getCreateTime()
     {
@@ -48,16 +48,16 @@ class News extends Eloquent
 
     public function scopeGetTitleInEnglish()
     {
-        $content = Translation::getTranslation($this->title_id)->content;
+        $content = Translation::getTranslation($this->title_id,Language::english())->content;
         return $content;
     }
 
     public function scopeGetTitle()
     {
-        return Translation::getTranslation($this->title_id,Language::detectLanguage())->content;
+        return Translation::getTranslation($this->title_id)->content;
     }
     public function scopeGetDescription()
     {
-        return Translation::getTranslation($this->title_id,Language::detectLanguage())->content;
+        return Translation::getTranslation($this->description_id)->content;
     }
 }

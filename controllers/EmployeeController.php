@@ -1,6 +1,6 @@
 <?php
 
-class EmployeeController extends \BaseController {
+class EmployeeController extends \BaseController{
 
 	/**
 	 * Display a listing of the resource.
@@ -90,9 +90,14 @@ class EmployeeController extends \BaseController {
             $translation->save();
 
             $employee->employee_description_id = $key->code;
-            $image = Input::file('image');
-			$employee->image = $image->getClientOriginalName();										
-			$image->move('images/',$employee->image);
+
+			$image = Input::file('image');
+			if(!empty($image)) :
+				$employee->image = $image->getClientOriginalName();
+				$image->move('images/',$employee->image);
+			else :
+				$employee->image = 'images/noimage.jpg';
+			endif;
 			$employee->save();									
 
 			Session::flash('Message','Employee Added Successfully!');
@@ -189,7 +194,10 @@ class EmployeeController extends \BaseController {
             if(!empty($image)) :
 			    $employee->image = $image->getClientOriginalName();
 			    $image->move('images/',$employee->image);
+			else :
+				$employee->image = 'images/noimage.jpg';
             endif;
+
 			$employee->save();
 
 			Session::flash('Message','Employee Added Successfully!');
@@ -221,6 +229,5 @@ class EmployeeController extends \BaseController {
 		Session::flash('message', 'Successfully deleted the Employee!');
 		return Redirect::to('admin/employee/list');
 	}
-
 
 }

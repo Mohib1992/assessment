@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('AllSeeder');
 		$this->command->info('Seeding Completed');
+//		$this->call('MenuSeeder');
 	}
 
 }
@@ -33,44 +34,7 @@ class AllSeeder extends Seeder {
         DB::table('translation')->delete();
         DB::table('translation_key')->delete();
 
-		$admin = User::create(array(
-			'email' => 'moin@khan.com',
-			'password' => Hash::make('1234'),
-			'role' => 'admin'		
-		));
-		
-		$this->command->info('User created');
-
-        $english = Language::create([
-            'code'=> 'eng'
-        ]);
-
-        $german = Language::create([
-            'code'=> 'ger'
-        ]);
-
-		$this->command->info('Language created');
-
-
-		$short = Translation::create([
-
-			'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.	Lorem ipsum dolor sit amet',
-			'translation_key_id' => '12',
-			'language_id' => $english
-
-		]);
-
-		$short = Translation::create([
-
-			'content' => 'Due to our geographical situation and professional background we have some advantages. To learn more, please follow the link.',
-			'translation_key_id' => '13',
-			'language_id' => $english
-
-		]);
-
-		$this->command->info('Short description created');
-
-
+		DB::unprepared(file_get_contents(app_path().'\database\database.sql'));
 	}
 }
 

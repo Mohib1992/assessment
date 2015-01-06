@@ -27,7 +27,7 @@ class CreateTranslationKeyTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('translation_key');
+		Schema::dropIfExists('translation_key');
 	}
 
 }

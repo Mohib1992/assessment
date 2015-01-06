@@ -29,7 +29,7 @@ class CreateEmployeeTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('employee');
+		Schema::dropIfExists('employee');
 	}
 
 }

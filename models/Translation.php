@@ -1,9 +1,6 @@
 <?php
 
 
-/**
- * @property mixed language_id
- */
 class Translation extends Eloquent {
 
     protected $fillable = array('translation_key_id','content','language_id');

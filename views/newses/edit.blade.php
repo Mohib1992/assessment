@@ -13,23 +13,23 @@
 
 		<p>
             {{ Form::label('title', 'Title') }}</br>
-            {{ Form::text('title',$news->title_id) }}
+            {{ Form::text('titleInEnglish',$title['english']) }}
 		</p>
 
         <p>
             {{ Form::label('title', 'Title') }}
             <span>(In German)</span>
-            {{ Form::text('title', null) }}
+            {{ Form::text('titleInGerman', $title['german']) }}
 		</p>
 
         <p>
             {{ Form::label('description', 'Description') }}</br>
-            {{ Form::textarea('description', $news->description_id) }}
+            {{ Form::textarea('descriptionInEnglish', $description['english']) }}
         </p>
         <p>
             {{ Form::label('description', 'Description') }}
             <span>(In German)</span>
-            {{ Form::textarea('description', null) }}
+            {{ Form::textarea('descriptionInGerman', $description['german']) }}
         </p>
 
         <p>

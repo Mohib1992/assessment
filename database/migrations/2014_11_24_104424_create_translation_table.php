@@ -16,7 +16,7 @@ class CreateTranslationTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer('translation_key_id');
-            $table->string('content');
+            $table->text('content');
             $table->integer('language_id');
 			$table->timestamps();
 		});
@@ -29,7 +29,7 @@ class CreateTranslationTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('translation');
+		Schema::dropIfExists('translation');
 	}
 
 }
