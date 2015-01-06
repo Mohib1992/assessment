@@ -27,7 +27,7 @@
                             <li>{{ HTML::link('http://www.facebook.com','FaceBook') }}</li>
                             <li>{{ HTML::secureLink('http://plus.google.com','Google+') }}</li>
                             <li>{{ HTML::link('http://www.linkedin.com','LinkedIn') }}</li>
-                            <li>{{ HTML::link('/blog',trans('menubar.Blog')) }}</li>
+                            {{--<li>{{ HTML::link('/blog',trans('menubar.Blog')) }}</li>--}}
                         </ul>
                     </li>
                     <li class="dropdown">

@@ -9,7 +9,7 @@ return array(
     'OurAdvantagesShort' => $shortContent->show(ContentKey::$OUR_ADVANTAGE,Language::english()),
 	'OurExpertise' => 'Our Expertise',
 	'ContactWithUs' => 'Contact With Us',
-	'NewAndPublication' => 'New And Publication',
+	'NewAndPublication' => 'News And Publication',
     'InformationTechnology' => 'Information Technology',
 );
 ?>

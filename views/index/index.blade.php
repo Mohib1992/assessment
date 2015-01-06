@@ -131,7 +131,7 @@
                                                 <p style="text-align: justify;">{{ $index }}</p>
                                             @endif
                                             @if($n == 'id')
-                                                {{ HTML::link('news/'.$index,trans('button.READ_MORE'),array('class'=>'btn btn-default'))}}
+                                                {{--<{{ HTML::link('news/'.$index,trans('button.READ_MORE'),array('class'=>'btn btn-default'))}}--}}
                                             @endif
                                         </div>
                                     @endforeach
@@ -139,7 +139,6 @@
                             </div>
 		              @endforeach
                	@endif
-                
         </div>            
         <!-- End Page Content -->
 @stop
