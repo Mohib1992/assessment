@@ -175,12 +175,12 @@ class NewsController extends \BaseController
 	*/
 	public function edit($id)
 	{
-		//
 		$news = News::find($id);
 		$title['english'] = Translation::getTranslation($news->title_id,Language::english())->content;
 		$description['english'] = Translation::getTranslation($news->description_id,Language::english())->content;
 		$title['german'] = Translation::getTranslation($news->title_id,Language::german())->content;
 		$description['german'] = Translation::getTranslation($news->description_id,Language::german())->content;
+
 		return View::make('newses.edit')
 				->with('news',$news)
 				->with('title',$title)
@@ -211,8 +211,8 @@ class NewsController extends \BaseController
 		);
 		
 		$inputs = array(
-			'title' => Input::get('title'),
-			'description' => Input::get('description'),
+			'title' => Input::get('titleInEnglish'),
+			'description' => Input::get('descriptionInEnglish'),
 			'cover_image' => Input::file('cover_image'),
 			'status' => Input::get('status')
 		
@@ -221,7 +221,7 @@ class NewsController extends \BaseController
 
 
 		if($validator->fails()):
-			return Redirect::to('/admin/news/edit/'.$id)
+			return Redirect::to('/admin/news/'.$id.'/edit')
 					->withErrors($validator)
 					->withInput(Input::all());
 		else :
@@ -252,7 +252,6 @@ class NewsController extends \BaseController
 
 			$image = Input::file('cover_image');
 
-			//var_dump($image);
 			if(!empty($image)) :
 				$news->cover_image = $image->getClientOriginalName();			
 				$image->move('images/',$news->cover_image);

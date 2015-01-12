@@ -3,7 +3,7 @@
 class Employee extends Eloquent implements Serializable
 {
 
-    protected $fillable = array('name', 'description_id', 'image');
+    protected $fillable = array('name', 'employee_description_id', 'image');
 
     protected $table = 'employee';
 
@@ -59,6 +59,12 @@ class Employee extends Eloquent implements Serializable
                 ->where('language_id', $id)->first()->content;
         }
 
+        return $content;
+    }
+
+    public function getEmployeeDescription()
+    {
+        $content = Translation::getTranslation($this->employee_description_id)->content;
         return $content;
     }
 
