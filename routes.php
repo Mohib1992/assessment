@@ -10,7 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+// this is main project
 Route::get('/',
 	function()
 	{
