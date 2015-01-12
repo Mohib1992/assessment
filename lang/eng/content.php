@@ -10,6 +10,12 @@ return array(
 	'OurExpertise' => 'Our Expertise',
 	'ContactWithUs' => 'Contact With Us',
 	'NewAndPublication' => 'News And Publication',
-    'InformationTechnology' => 'Information Technology',
+    'InformationTechnology' => 'Information Technology',	
+	'OurExpertiseContent1' => 'Consulting',
+	'OurExpertiseContent2' => 'IT Management.',
+	'OurExpertiseContent3' => 'Project Management & coordination.',
+	'OurExpertiseContent4' => 'Global networking.',
+	'OurExpertiseContent5' => 'Continental Interlacing.',
+	'OurExpertiseContent6' => 'Trade Optimization'
 );
 ?>
