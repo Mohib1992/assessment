@@ -9,17 +9,28 @@ class MenuController extends \BaseController {
 	 */
 	public function index()
     {
-        $englishMenu = Translation::where('translation_key_id', '<', '12')
-            ->where('language_id', Language::english())
-            ->get();
+//        $englishMenu = Translation::where('translation_key_id', '<', '12')
+//            ->where('language_id', Language::english())
+//            ->get();
+//
+//        $germanMenu = Translation::where('translation_key_id', '<', '12')
+//            ->where('language_id', Language::german())
+//            ->get();
 
-        $germanMenu = Translation::where('translation_key_id', '<', '12')
-            ->where('language_id', Language::german())
-            ->get();
+        $menus = Translation::where('translation_key_id','<','12')->get();
+        $values = array();
+        foreach ($menus as $menu) {
+            $values['key'] = $menu->translation_key_id;
+            $values['content'] = $menu->content;
+            $values['language_id'] = $menu->language_id;
+            $ids[] = $values;
+
+        }
+        sort($ids);
+        print_r($ids);
 
         return View::make('menus.list')
-            ->with('menusEnglish', $englishMenu)
-            ->with('menusGerman', $germanMenu);
+            ->with('menus', $ids);
 
     }
 
