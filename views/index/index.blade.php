@@ -80,13 +80,13 @@
                                 <h2 class="panel-title" style="color: #fff; font-size: 24px;">{{ trans('content.OurExpertise') }}</h2>
                             </div>
                             <div class="panel-body">
-                                <ul>
-                                    <li>Strategi & Organization</li>
-                                    <li>Coorporate Development</li>
-                                    <li>Globalization</li>
-                                    <li>Operations</li>
-                                    <li>Corporate Finance</li>
-                                    <li>IT Management</li>
+                                <ul>                                    
+                                    <li>Consulting.</li>
+                                    <li>IT Management.</li>
+                                    <li>Project Management & coordination.</li>
+                                    <li>Global networking.</li>
+                                    <li>Continental Interlacing.</li>
+                                    <li>Trade Optimization</li>
                                 </ul>
                             </div>
                         </div>

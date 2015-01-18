@@ -18,7 +18,7 @@
         <div class="col-sm-6 col-md-offset-2">
             <h2>Get in touch</h2>
             <hr>
-            <p>Need a quote, enquiry about our team creating your App or have a suggestion for the <strong>Move Me</strong> App, we need to hear from you:</p>
+            <p>Feel Free to contact <strong>3Spire</strong> team, we need to hear from you:</p>
             <form class="form-horizontal tpad" role="form">
                 <div class="form-group">
                     <label for="email" class="col-lg-2 control-label">Email</label>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="modal-body">
                         <p>We appreciate you getting in touch. Please be patient, we will contact you shortly with a reply.</p>
-                        <p>The MoveMe Team</p>
+                        <p>The 3Spire Team</p>
                     </div>
                     <div class="modal-footer">
                         <a href="index.html" class="btn btn-default btn-lg">OK</a>
@@ -61,10 +61,9 @@
             <img class="img-circle img-responsive" src="images/office.jpg">
             <hr>
             <address>
-                    <h3>Strateic Consulting</h3>
-                    Mirpur, Dhaka<br>
-                    Bangladesh<br>
-                    <a href="mailto: test@mail.com">test@mail.com</a><br>
+                    <h3>3Spire</h3>
+                    Vienna, Austria<br>
+                    <a href="mailto: test@mail.com">3Spire@gmail.com</a><br>
                     <abbr title="Phone">P:</abbr>xxx xxx-xxxx
             </address>
         </div>

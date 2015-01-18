@@ -11,5 +11,11 @@ return array(
 	'ContactWithUs' => 'Contact With Us',
 	'NewAndPublication' => 'New And Publication',
     'InformationTechnology' => 'Information Technology',
+	'OurExpertiseContent1' => 'Consulting',
+	'OurExpertiseContent2' => 'IT Management.',
+	'OurExpertiseContent3' => 'Project Management & coordination.',
+	'OurExpertiseContent4' => 'Global networking.',
+	'OurExpertiseContent5' => 'Continental Interlacing.',
+	'OurExpertiseContent6' => 'Trade Optimization'
 );
 ?>
