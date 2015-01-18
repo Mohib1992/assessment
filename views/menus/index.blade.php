@@ -32,13 +32,7 @@
 									<!--<li>{{ HTML::link('/blog',trans('menubar.Blog')) }}</li>-->
 								</ul>
 							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('menubar.AboutUs')}} <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li>{{ HTML::link('/about',Lang::get('menubar.AboutUsSub'))}}</li>
-									<li>{{ HTML::link('/team',trans('menubar.Team')) }}</li>
-								</ul>
-							</li>
+							<li>{{ HTML::link('/about',trans('menubar.AboutUs'))}}</li>
 							<li>{{ HTML::link('/contact',trans('menubar.Contact'))}}</li>
 						</ul>
 						<!--<div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>-->

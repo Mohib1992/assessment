@@ -45,8 +45,6 @@ Route::get('/admin',
 
 	});
 
-
-Route::get('/team', array('as'  =>'team','uses'=>'EmployeeController@index'));
 Route::get('/admin/employee/list', array('as'  =>'admin.employee.list','uses'=>'EmployeeController@EmployeeList'));
 Route::get('/admin/employee/list/{lan}', array('as'  =>'admin.employee.list','uses'=>'EmployeeController@EmployeeList'));
 Route::get('/admin/employee/list/{lan}', array('as'  =>'admin.employee.list','uses'=>'EmployeeController@EmployeeList'));
@@ -95,12 +93,13 @@ Route::resource('/news','NewsController',array(
 	'only' => 'show'
 ));
 
-
+Route::get('/team', array('as'  =>'team','uses'=>'EmployeeController@index'));
 Route::get('/about',function(){
 
     $page = Page::find(5);
     return View::make('page.page')
-        ->with('page',$page);
+        ->with('page',$page)
+		->with('employees',Employee::all());
 });
 
 Route::get('/advantage',function(){

@@ -9,28 +9,19 @@ class MenuController extends \BaseController {
 	 */
 	public function index()
     {
-//        $englishMenu = Translation::where('translation_key_id', '<', '12')
-//            ->where('language_id', Language::english())
-//            ->get();
-//
-//        $germanMenu = Translation::where('translation_key_id', '<', '12')
-//            ->where('language_id', Language::german())
-//            ->get();
+        $englishMenu = Translation::where('translation_key_id', '<', '12')
+            ->where('language_id', Language::english())
+            ->orderBy('translation_key_id')
+            ->get();
 
-        $menus = Translation::where('translation_key_id','<','12')->get();
-        $values = array();
-        foreach ($menus as $menu) {
-            $values['key'] = $menu->translation_key_id;
-            $values['content'] = $menu->content;
-            $values['language_id'] = $menu->language_id;
-            $ids[] = $values;
-
-        }
-        sort($ids);
-        print_r($ids);
+        $germanMenu = Translation::where('translation_key_id', '<', '12')
+            ->where('language_id', Language::german())
+            ->orderBy('translation_key_id')
+            ->get();
 
         return View::make('menus.list')
-            ->with('menus', $ids);
+            ->with('menusInEnglish',$englishMenu)
+            ->with('menusInGerman',$germanMenu);
 
     }
 
@@ -95,7 +86,7 @@ class MenuController extends \BaseController {
             $translation->save();
         }
 
-        return Redirect::back();
+        return Redirect::to('admin/menu');
 
     }
 

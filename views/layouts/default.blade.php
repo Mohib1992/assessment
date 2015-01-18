@@ -21,39 +21,6 @@
 		<![endif]-->
     </head>    
     <body>
-<<<<<<< HEAD
-		@include('menus.index')
-		@yield('content')    	
-	
-		<!-- Footer Area -->     
-		<div class="ftr">
-			<div class="container">
-				<div class="row">
-					<footer class="col-lg-9 col-md-offset-2">
-						<div class="pull-left">                    
-							<p>
-								{{ HTML::image('images/us.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
-								{{ HTML::link('/eng','English',array('class'=>'language_text')) }}
-								{{ HTML::image('images/germany.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
-								{{ HTML::link('/ger','Germany',array('class'=>'language_text')) }}
-							</p>
-						</div>
-						<div class="pull-right">
-							<p>&copy; 3Spire. 2014</p>
-						</div>
-					</footer>
-				</div>
-			</div>    
-		</div>    
-		<!-- End Footer -->
-	
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->        
-		{{ HTML::script('js/jquery.js') }}
-		{{ HTML::script('js/progressbar.js') }}
-		<!-- Include all compiled plugins (below), or include individual files as needed -->       
-		{{ HTML::script('js/bootstrap.min.js') }}
-=======
-    
     	@include('menus.index')
     	@yield('content')    	
     
@@ -86,7 +53,6 @@
         {{ HTML::script('js/progressbar.js') }}
         <!-- Include all compiled plugins (below), or include individual files as needed -->       
         {{ HTML::script('js/bootstrap.min.js') }}
->>>>>>> 32d80d392fb1e18cb04327e14a3dcd7a25d92f66
         <script>        
             $(function (){            	
                 $('.carousel').carousel({
