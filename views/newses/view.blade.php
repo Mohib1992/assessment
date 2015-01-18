@@ -1,7 +1,7 @@
  @extends('layouts.admin')
 
 @section('content')
-	<span class="alert alert-success" style="display: none;"></span>
+	@include('common.flashmessage')
 	<a class="btn btn-default" href="{{ URL::to('/admin/news/create') }}" >
   			<span class="glyphicon glyphicon-plus"></span> Add News
 		</a>

@@ -21,6 +21,7 @@
 		<![endif]-->
     </head>    
     <body>
+<<<<<<< HEAD
 		@include('menus.index')
 		@yield('content')    	
 	
@@ -51,6 +52,41 @@
 		{{ HTML::script('js/progressbar.js') }}
 		<!-- Include all compiled plugins (below), or include individual files as needed -->       
 		{{ HTML::script('js/bootstrap.min.js') }}
+=======
+    
+    	@include('menus.index')
+    	@yield('content')    	
+    
+    	<!-- Footer Area -->     
+        <div class="ftr">
+            <div class="container col-centered">
+                <div class="row">
+                    <footer>
+                    <div class="pull-left ft_space">                    
+                            <p>
+                                <a href="{{ URL::to('/eng') }}">
+                                    {{ HTML::image('images/us.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
+                                </a>
+                                <a href="{{ URL::to('/ger') }}">
+                                    {{ HTML::image('images/germany.png','flag',array('name'=> App::getLocale(),'class'=>'language','heigh'=>'20','width'=>'20')) }}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="pull-right ft_space">
+                            <p>&copy; 3Spire. 2014</p>
+                        </div>
+                    </footer>
+                </div>
+            </div>    
+        </div>    
+        <!-- End Footer -->
+    
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->        
+        {{ HTML::script('js/jquery.js') }}
+        {{ HTML::script('js/progressbar.js') }}
+        <!-- Include all compiled plugins (below), or include individual files as needed -->       
+        {{ HTML::script('js/bootstrap.min.js') }}
+>>>>>>> 32d80d392fb1e18cb04327e14a3dcd7a25d92f66
         <script>        
             $(function (){            	
                 $('.carousel').carousel({

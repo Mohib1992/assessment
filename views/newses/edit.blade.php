@@ -2,32 +2,32 @@
 
 @section('content')
 	<h1>Editing {{ $news->title }}</h1>
-    
+
     @include('newses.partials.error')
-    
-    {{ Form::open(array('url'=>'/admin/news/update','method'=>'PUT','enctype'=>'multipart/form-data')) }}	
+
+    {{ Form::open(array('url'=>'/admin/news/update','method'=>'PUT','enctype'=>'multipart/form-data')) }}
     		{{ Form::hidden('id',$news->id)}}
 		<p>
             {{ Form::label('publication_date', 'Date of Publication '.$news->getCreateTime()) }}</br>
 		</p>
 
 		<p>
-            {{ Form::label('title', 'Title') }}</br>
+            {{ Form::label('titleInEnglish', 'Title') }}</br>
             {{ Form::text('titleInEnglish',$title['english']) }}
 		</p>
 
         <p>
-            {{ Form::label('title', 'Title') }}
+            {{ Form::label('titleInGerman', 'Title') }}
             <span>(In German)</span>
             {{ Form::text('titleInGerman', $title['german']) }}
 		</p>
 
         <p>
-            {{ Form::label('description', 'Description') }}</br>
+            {{ Form::label('descriptionInEnglish', 'Description') }}</br>
             {{ Form::textarea('descriptionInEnglish', $description['english']) }}
         </p>
         <p>
-            {{ Form::label('description', 'Description') }}
+            {{ Form::label('descriptionInGerman', 'Description') }}
             <span>(In German)</span>
             {{ Form::textarea('descriptionInGerman', $description['german']) }}
         </p>
@@ -42,7 +42,7 @@
             {{ Form::label('status', 'Status') }}</br>
             {{ Form::select('status', array('--Select One--','Not Publish','Publish'), $news->status ) }}
     	</p>
-   
+
         {{ Form::submit('Update News!') }}
 
     {{ Form::close() }}

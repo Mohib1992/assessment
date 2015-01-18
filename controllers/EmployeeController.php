@@ -171,31 +171,23 @@ class EmployeeController extends \BaseController{
 			$employee = Employee::find($id);
 			$employee->name = Input::get('name');
 
-            $english = Language::where('code','eng')->first()->id;
-            $german = Language::where('code','ger')->first()->id;
-
 			$description['eng'] = Input::get('description');
             $description['ger'] = Input::get('descriptionInGerman');
 
-            $trans = Translation::where('translation_key_id',$employee->employee_description_id)
-                    ->where('language_id',$english)
-                    ->first();
+			$trans = Translation::getTranslation($employee->description_id,Language::english());
+
             $trans->content = $description['eng'];
             $trans->save();
 
-
-            $trans = Translation::where('translation_key_id',$employee->employee_description_id)
-                    ->where('language_id',$german)
-                    ->first();
+			$trans = Translation::getTranslation($employee->employee_description_id,Language::german());
             $trans->content = $description['ger'];
             $trans->save();
 
 			$image = Input::file('image');
+
             if(!empty($image)) :
-			    $employee->image = $image->getClientOriginalName();
+			    $employee->image =  date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
 			    $image->move('images/',$employee->image);
-			else :
-				$employee->image = 'images/noimage.jpg';
             endif;
 
 			$employee->save();

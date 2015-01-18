@@ -11,7 +11,7 @@
 			{{ HTML::image('images/'.$employee->image,$employee->image,array('class'=>'img-circle img-thumbnail img-responsive'))}}
 		 </div>
 		 <div class="col-sm-6 col-md-6">
-			<p id="member-description">{{ $employee->autoContentTranslation() }}</p>
+			<p id="member-description">{{ $employee->getEmployeeDescription() }}</p>
 		 </div>
 	</div>
 	@endif
