@@ -10,7 +10,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<div>{{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image','height'=>'50')) }}</div>
+						<div><a href="{{URL::to('/')}}">{{ HTML::image('/images/Final_black.png','3Spire',array('class'=>'navbar-image','height'=>'50')) }}</a></div>
 					</div>
 					<div class="pull-right">
 						<ul class="nav navbar-nav">
