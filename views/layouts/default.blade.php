@@ -82,10 +82,7 @@
             })
 			
 			$( document ).ready(function() {
-				console.log( "ready!" );
-				var minHight = $(document).height();
-				//$('.ftr').css('margin-top', minHight);
-				console.log( minHight );										
+
 			});
 			
 			// Window load event used just in case window height is dependant upon images

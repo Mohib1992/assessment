@@ -14,7 +14,7 @@
 					</div>
 					<div class="pull-right">
 						<ul class="nav navbar-nav">
-							<li>{{ HTML::link('/',trans('menubar.Home')) }}</li>
+							{{--<li>{{ HTML::link('/',trans('menubar.Home')) }}</li>--}}
 							<li>{{ HTML::link('/client',trans('menubar.Clients')) }}</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('menubar.Services')}}<b class="caret"></b></a>

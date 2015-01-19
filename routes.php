@@ -88,6 +88,8 @@ Route::get('/contact',
 Route::resource('/page','PageController');
 Route::resource('/admin/page','PageController');
 Route::resource('/admin/news','NewsController');
+Route::post('/admin/news/{$id}/published','NewsController@publish');
+Route::post('/admin/news/{$id}/unpublished','NewsController@unPublish');
 Route::resource('/news','NewsController',array(
 
 	'only' => 'show'

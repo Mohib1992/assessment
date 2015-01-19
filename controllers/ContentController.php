@@ -83,8 +83,8 @@ class ContentController extends \BaseController {
 
 		$this->log->printLog('Start Stack');
 		$key = Input::get('key');
-		$contentInEnglish = Input::get('contentInEnglish');
-		$contentInGerman = Input::get('contentInGerman');
+		$contentInEnglish = Input::get('descriptionInEnglish');
+		$contentInGerman = Input::get('descriptionInGerman');
 
 		$getEnglishTranslationId = Translation::getTranslation($key,Language::english())->id;
 

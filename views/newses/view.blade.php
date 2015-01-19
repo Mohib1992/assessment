@@ -2,19 +2,20 @@
 
 @section('content')
 	@include('common.flashmessage')
+	<span class="alert alert-info" style="display: none;"></span>
 	<a class="btn btn-default" href="{{ URL::to('/admin/news/create') }}" >
   			<span class="glyphicon glyphicon-plus"></span> Add News
 		</a>
-	<div class="col-sm-8">		
+	<div class="col-sm-8">
 		@if(isset($newses))			
-			@foreach($newses as $news)				
+			@foreach($newses as $news)
 				 {{ Form::open(array('url' => 'admin/news/' . $news->id)) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Delete',array('class'=>'btn btn-danger')) }}
                 {{ Form::close() }}
                 {{ HTML::link('admin/news/'.$news->id.'/edit','Edit',array('class'=>'btn btn-primary'))}}
 				@if($news->status == 'publish')
-					<a class="btn btn-primary stop" href="#" >
+					<a class="btn btn-primary stop" href="#" rel='{{$news->id}}'>
   						<span class="glyphicon glyphicon-stop"></span>
 					</a>
 				@else 

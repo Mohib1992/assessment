@@ -5,8 +5,6 @@ class NewsController extends \BaseController
 {
 	private $log;
 
-
-
 	/**
 	* Display a listing of the resource.
 	*
@@ -24,8 +22,9 @@ class NewsController extends \BaseController
 	public function index()
 	{
 		//
+		$news = News::orderBy('created_at','desc')->get();
 		return View::make('newses.view')
-		->with('newses',News::all());
+		->with('newses',$news);
 	}
 	
 	public function getNewsById($id)
@@ -38,7 +37,7 @@ class NewsController extends \BaseController
 	public function getAllNews()
 	{
 		$n = array();
-		foreach (News::paginate(2) as $news)
+		foreach (News::orderBy('created_at','desc')->where('status','=','publish')->paginate(2) as $news)
 		{
 			$n[] = array(
 					'cover_image' => $news->cover_image,
@@ -137,7 +136,12 @@ class NewsController extends \BaseController
 
 			$image = Input::file('cover_image');
 			$news->cover_image = $image->getClientOriginalName();
-			$news->status = Input::get('status');
+
+			if(Input::get('status') < 1)
+				$news->status = 0;
+			else
+				$news->status = 1;
+
 			$image->move('images/',$news->cover_image);
 
 			$news->save();
@@ -281,9 +285,18 @@ class NewsController extends \BaseController
 
         $news->delete();
 
-        Session::flash('Message','Page Delete Successfully');
+        Session::flash('Message','News Delete Successfully');
         return Redirect::back();
 	}
 
+	public function published($id)
+	{
+		echo $id;
+	}
+
+	public function unpublished($id)
+	{
+		echo $id;
+	}
 
 }

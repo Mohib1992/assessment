@@ -54,13 +54,25 @@
         			e.preventDefault();
         			$child = $(this).children();
         			$class = $child.attr('class');
-        			
+					$id = $(this).attr('rel');
+
         			if($class == 'glyphicon glyphicon-play')
         			{
         				//news alrady published
 						$child.removeClass('glyphicon-play');
 						$child.addClass('glyphicon-stop');
-						$('span.alert').text('News has been Published!').show();
+						$.ajax({
+							type: "post",
+							url: "admin/news/{$id}/unpublished",
+							data: $id,
+							success: function(responseData, textStatus, jqXHR) {
+								if(textStatus == 'success')
+									$('span.alert').text(responseData).show();
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								console.log(errorThrown);
+							}
+						})
 					}else {					
 						//news not published yet
 						$child.removeClass('glyphicon-stop');
