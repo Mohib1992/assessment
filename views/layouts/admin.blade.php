@@ -54,30 +54,23 @@
         			e.preventDefault();
         			$child = $(this).children();
         			$class = $child.attr('class');
-					$id = $(this).attr('rel');
+					$id = $(this).attr('href');
 
         			if($class == 'glyphicon glyphicon-play')
         			{
         				//news alrady published
 						$child.removeClass('glyphicon-play');
 						$child.addClass('glyphicon-stop');
-						$.ajax({
-							type: "post",
-							url: "admin/news/{$id}/unpublished",
-							data: $id,
-							success: function(responseData, textStatus, jqXHR) {
-								if(textStatus == 'success')
-									$('span.alert').text(responseData).show();
-							},
-							error: function(jqXHR, textStatus, errorThrown) {
-								console.log(errorThrown);
-							}
-						})
+						$.get('news/'+$id+'/unpublished',function(data){
+							console.log(data);
+						});
 					}else {					
 						//news not published yet
 						$child.removeClass('glyphicon-stop');
-						$child.addClass('glyphicon-play');	
-						$('span.alert').text('News has been Unpublished!').show();
+						$child.addClass('glyphicon-play');
+						$.get('news/'+$id+'/published',function(data){
+							console.log(data);
+						});
 					}
 					
 					setTimeout(function(){

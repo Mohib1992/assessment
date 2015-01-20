@@ -289,14 +289,25 @@ class NewsController extends \BaseController
         return Redirect::back();
 	}
 
-	public function published($id)
+	public function changeNewsStatus($id)
 	{
-		echo $id;
-	}
+		if(Request::ajax())
+		{
+			$news = News::find($id);
 
-	public function unpublished($id)
-	{
-		echo $id;
-	}
+			if($news->status == 'not publish') :
+				$news->status = 'publish';
+				Session::flash('Message','News Published Successfully!');
+				$news->save();
+				return $news->status;
+			endif;
 
+			if($news->status == 'publish') :
+				$news->status = 'not publish';
+				Session::flash('Message','News Unpublished Successfully!');
+				$news->save();
+				return $news->status;
+			endif;
+		}
+	}
 }

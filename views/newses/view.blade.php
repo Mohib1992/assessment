@@ -2,7 +2,6 @@
 
 @section('content')
 	@include('common.flashmessage')
-	<span class="alert alert-info" style="display: none;"></span>
 	<a class="btn btn-default" href="{{ URL::to('/admin/news/create') }}" >
   			<span class="glyphicon glyphicon-plus"></span> Add News
 		</a>
@@ -15,11 +14,11 @@
                 {{ Form::close() }}
                 {{ HTML::link('admin/news/'.$news->id.'/edit','Edit',array('class'=>'btn btn-primary'))}}
 				@if($news->status == 'publish')
-					<a class="btn btn-primary stop" href="#" rel='{{$news->id}}'>
+					<a class="btn btn-primary stop" href="{{ $news->id }}">
   						<span class="glyphicon glyphicon-stop"></span>
 					</a>
 				@else 
-					<a class="btn btn-primary play" href="#" >
+					<a class="btn btn-primary play" href="{{ $news->id }}" >
 	  					<span class="glyphicon glyphicon-play"></span>
 					</a>				
 				@endif
