@@ -16,25 +16,25 @@
 <div class="container padded">
     <div class="row">
         <div class="col-sm-6 col-md-offset-2">
-            <h2>Get in touch</h2>
+            <h2>{{trans('content.GET_IN_TOUCH')}}</h2>
             <hr>
             <p>Feel Free to contact <strong>3Spire</strong> team, we need to hear from you:</p>
             <form class="form-horizontal tpad" role="form">
                 <div class="form-group">
-                    <label for="email" class="col-lg-2 control-label">Email</label>
+                    <label for="email" class="col-lg-2 control-label">{{trans('content.EMAIL')}}</label>
                     <div class="col-lg-10">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" placeholder="{{trans('content.EMAIL')}}">
                     </div>
                 </div>
                 <div class="form-group tpad">
-                    <label for="message" class="col-lg-2 control-label">Message</label>
+                    <label for="message" class="col-lg-2 control-label">{{trans('content.MESSAGE')}}</label>
                     <div class="col-lg-10">
-                        <textarea class="form-control" rows="6" id="message" placeholder="Message..."></textarea>
+                        <textarea class="form-control" rows="6" id="message" placeholder="{{trans('content.MESSAGE')}}..."></textarea>
                     </div>
                 </div>
                 <div class="form-group tpad">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <a data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">Send</a>
+                        <a data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">{{trans('button.SEND')}}</a>
                     </div>
                 </div>
             </form>

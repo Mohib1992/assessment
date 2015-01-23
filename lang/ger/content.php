@@ -2,20 +2,28 @@
 $shortContent = new ContentController();
 return array(
 	
-	'KnowAboutUs' => 'Know About Us',
-	'WhoWeAre' => 'Who We Are',
-	'WhoWeAreShort' => $shortContent->show(ContentKey::$HOW_WE_ARE,Language::german()),
-	'OurAdvantages' => 'Our Advantages',
+	'KnowAboutUs' => 'Über uns',
+	'WhoWeAre' => ' Wer wir sind',
+	'WhoWeAreShort' => $shortContent->show(ContentKey::$WHO_WE_ARE,Language::german()),
+	'OurAdvantages' => 'Unsere Vorteile',
     'OurAdvantagesShort' => $shortContent->show(ContentKey::$OUR_ADVANTAGE,Language::german()),
-	'OurExpertise' => 'Our Expertise',
-	'ContactWithUs' => 'Contact With Us',
-	'NewAndPublication' => 'New And Publication',
-    'InformationTechnology' => 'Information Technology',
-	'OurExpertiseContent1' => 'Consulting',
+	'OurExpertise' => 'Unsere Expertise',
+	'ContactWithUs' => 'Kontakt',
+	'NewAndPublication' => 'Neuigkeiten',
+    'InformationTechnology' => 'Information Technology.',
+	'OurExpertiseContent1' => 'Consulting.',
 	'OurExpertiseContent2' => 'IT Management.',
-	'OurExpertiseContent3' => 'Project Management & coordination.',
-	'OurExpertiseContent4' => 'Global networking.',
+	'OurExpertiseContent3' => 'Projektmanagement & Steuerung.',
+	'OurExpertiseContent4' => 'Globales Netzwerk.',
 	'OurExpertiseContent5' => 'Continental Interlacing.',
-	'OurExpertiseContent6' => 'Trade Optimization'
+	'OurExpertiseContent6' => 'Handelsptimierung',
+	'TEL' => 'Tel',
+	'MAIL' => 'Email' ,
+	'EMAIL' => 'Email',
+	'GET_IN_TOUCH' => 'Kontaktaufnahme',
+	'MESSAGE' => 'Nachricht',
+	'OUR_CLIENT' => 'Unsere Kunden',
+	'OUR_TEAM' => 'Unser Team',
+
 );
 ?>

@@ -81,12 +81,20 @@
                             </div>
                             <div class="panel-body">
                                 <ul>                                    
-                                    <li>Consulting.</li>
-                                    <li>IT Management.</li>
-                                    <li>Project Management & coordination.</li>
-                                    <li>Global networking.</li>
-                                    <li>Continental Interlacing.</li>
-                                    <li>Trade Optimization</li>
+
+                                    <li>{{trans('content.OurExpertiseContent1')}}</li>
+                                    <li>{{trans('content.OurExpertiseContent2')}}</li>
+                                    <li>{{trans('content.OurExpertiseContent3')}}</li>
+                                    <li>{{trans('content.OurExpertiseContent4')}}</li>
+                                    <li>{{trans('content.OurExpertiseContent5')}}</li>
+                                    <li>{{trans('content.OurExpertiseContent6')}}</li>
+
+                                    {{--<li>Consulting.</li>--}}
+                                    {{--<li>IT Management.</li>--}}
+                                    {{--<li>Project Management & coordination.</li>--}}
+                                    {{--<li>Global networking.</li>--}}
+                                    {{--<li>Continental Interlacing.</li>--}}
+                                    {{--<li>Trade Optimization</li>--}}
                                 </ul>
                             </div>
                         </div>
@@ -98,9 +106,9 @@
                             </div>
                             <div class="panel-body" style="background-color=#aaa;">
                                 <p>WE ARE HERE TO HELP YOU DRIVE CHANGE TOGETHER WE WILL SHAPE THE FUTURE.</p>
-                                <span>Tel: </span>
+                                <span>{{ trans('content.TEL') }}: </span>
                                 <p><span>000-000-000 </span></p>
-                                <span>Mail: </span>
+                                <span>{{ trans('content.MAIL') }}: </span>
                                 <p><span>info@mysite.com </span></p>
                             </div>
                         </div>
@@ -118,6 +126,7 @@
                             <div class="news">
                                 <div class="row">
                                     @foreach($news as $n => $index)
+                                        @if(!empty($index))
                                         <div class="col-sm-1 col-md-offset-2">
                                             @if($n == 'cover_image')
                                                 {{ HTML::image('images/'.$index,null,array('class'=>'img-thumbnail img-responsive')) }}
@@ -134,6 +143,7 @@
                                                 {{--<{{ HTML::link('news/'.$index,trans('button.READ_MORE'),array('class'=>'btn btn-default'))}}--}}
                                             @endif
                                         </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

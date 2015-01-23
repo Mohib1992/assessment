@@ -37,7 +37,7 @@ class NewsController extends \BaseController
 	public function getAllNews()
 	{
 		$n = array();
-		foreach (News::orderBy('created_at','desc')->where('status','=','publish')->paginate(2) as $news)
+		foreach (News::orderBy('created_at','desc')->where('status','=','publish')->paginate(10) as $news)
 		{
 			$n[] = array(
 					'cover_image' => $news->cover_image,
@@ -246,12 +246,14 @@ class NewsController extends \BaseController
 			$titleInGerman->content = $title['german'];
 			$titleInGerman->save();
 
+//			store english translation of news description
 			$descriptionInEnglish = Translation::getTranslation($news->description_id,Language::english());
-			$descriptionInEnglish->content = $title['german'];
+			$descriptionInEnglish->content = $description['english'];
 			$descriptionInEnglish->save();
 
+//			store gernam translation of news descrition
 			$descriptionInGerman = Translation::getTranslation($news->description_id,Language::german());
-			$descriptionInGerman->content = $title['german'];
+			$descriptionInGerman->content = $description['german'];
 			$descriptionInGerman->save();
 
 			$image = Input::file('cover_image');

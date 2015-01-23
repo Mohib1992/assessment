@@ -57,28 +57,6 @@
             $(function (){            	
                 $('.carousel').carousel({
                     interval: 4000
-                });
-
-                /*
-                $('.language_text').on('click',function(){
-                	
-                	var $text = $(this).attr('name');                	
-                	if($text == 'eng'){
-                		$(this).attr('src','images/germany.png');						
-						$(this).attr('name','ger');
-						$('.language_text').text('German');
-
-					}
-                		                	
-                	if($text == 'ger'){						
-                		$(this).attr('src','images/us.png');
-						$(this).attr('name','eng');
-						$('.language_text').text('English');
-					}
-										
-                });*/
-                                
-                                
             })
 			
 			$( document ).ready(function() {

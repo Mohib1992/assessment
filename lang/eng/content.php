@@ -4,7 +4,7 @@ return array(
 	
 	'KnowAboutUs' => 'Know About Us',
 	'WhoWeAre' => 'Who We Are',
-	'WhoWeAreShort' => $shortContent->show(ContentKey::$HOW_WE_ARE,Language::english()),
+	'WhoWeAreShort' => $shortContent->show(ContentKey::$WHO_WE_ARE,Language::english()),
 	'OurAdvantages' => 'Our Advantages',
     'OurAdvantagesShort' => $shortContent->show(ContentKey::$OUR_ADVANTAGE,Language::english()),
 	'OurExpertise' => 'Our Expertise',
@@ -16,6 +16,16 @@ return array(
 	'OurExpertiseContent3' => 'Project Management & coordination.',
 	'OurExpertiseContent4' => 'Global networking.',
 	'OurExpertiseContent5' => 'Continental Interlacing.',
-	'OurExpertiseContent6' => 'Trade Optimization'
+	'OurExpertiseContent6' => 'Trade Optimization',
+	'TEL' => 'Tel',
+	'MAIL' => 'Mail' ,
+	'EMAIL' => 'Email',
+	'GET_IN_TOUCH' => 'Get In Touch',
+	'MESSAGE' => 'Message',
+	'SEND'  => 'Send',
+	'OUR_CLIENT' => 'Our Client',
+	'OUR_TEAM' => 'Our Team',
+	'VIEW_DETAIL' => 'View Detail'
+
 );
 ?>
