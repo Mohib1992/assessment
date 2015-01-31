@@ -40,8 +40,10 @@ Route::get('/',
 Route::get('/admin',
 	function()
 	{
+		if(Auth::check())
+			return View::make('admin.admin');
+		else return View::make('login.login');
 
-		return View::make('admin.admin');
 
 	});
 
@@ -84,6 +86,23 @@ Route::get('/contact',
 		return View::make('contact.contact');
 
 	});
+Route::post('/contact/feedback',function(){
+
+	$data = [
+		'email' => Input::get('email'),
+		'msg' => Input::get('message')
+	];
+
+	Mail::send('contact.feedback',$data,function($message){
+
+		$message->to('3Spire@localhost.com')
+				->cc('moin.uoda@gmail.com')
+				->subject('FeedBack from viewer');
+	});
+
+	Redirect::back()
+			->with('success','Message send successfully');
+});
 
 Route::resource('/page','PageController');
 Route::resource('/admin/page','PageController');
@@ -142,3 +161,12 @@ Route::resource('admin/content','ContentController',[
 
 	'only' => array('index','update','edit')
 ]);
+
+
+Route::get('admin/login',function(){
+	return View::make('login.login');
+});
+Route::resource('admin/user','UserController');
+Route::post('admin/check','UserController@login');
+Route::get('admin/logout','UserController@logOut');
+

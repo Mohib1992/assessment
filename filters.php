@@ -95,7 +95,7 @@ Route::filter('auth',
 			}
 			else
 			{
-				return Redirect::guest('login');
+				return Redirect::guest('admin/login');
 			}
 		}
 	});

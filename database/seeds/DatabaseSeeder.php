@@ -11,24 +11,23 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('AllSeeder');
+		$this->call('UserSeeder');
 		$this->command->info('Seeding Completed');
 //		$this->call('MenuSeeder');
 	}
 
 }
-
 class AllSeeder extends Seeder {
-	
+
 	public function run()
 	{
 		DB::table('user')->delete();
 		DB::table('post')->delete();
 		DB::table('pages')->delete();
 		DB::table('project')->delete();
-		DB::table('service')->delete();	
+		DB::table('service')->delete();
 		DB::table('tags')->delete();
-		DB::table('employee')->delete();		
+		DB::table('employee')->delete();
 		DB::table('news')->delete();
         DB::table('language')->delete();
         DB::table('translation')->delete();

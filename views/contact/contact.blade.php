@@ -18,26 +18,29 @@
         <div class="col-sm-6 col-md-offset-2">
             <h2>{{trans('content.GET_IN_TOUCH')}}</h2>
             <hr>
-            <p>Feel Free to contact <strong>3Spire</strong> team, we need to hear from you:</p>
-            <form class="form-horizontal tpad" role="form">
+            <p>Feel Free to contact <strong>3Spire</strong> team</p>
+            @if(Session::has('success'))
+                <div class="alert alert-info">{{Session::get('success')}}</div>
+            @endif
+            {{Form::open(array('url'=>'/contact/feedback','method'=>'POST','class'=>'form-horizontal tpad','role'=>'form'))}}
                 <div class="form-group">
                     <label for="email" class="col-lg-2 control-label">{{trans('content.EMAIL')}}</label>
                     <div class="col-lg-10">
-                        <input type="email" class="form-control" id="email" placeholder="{{trans('content.EMAIL')}}">
+                        {{Form::email('email','',array('class'=>'form-control','id'=>'email','placeholder'=>trans('content.YOUR_EMAIL')))}}
                     </div>
                 </div>
                 <div class="form-group tpad">
                     <label for="message" class="col-lg-2 control-label">{{trans('content.MESSAGE')}}</label>
                     <div class="col-lg-10">
-                        <textarea class="form-control" rows="6" id="message" placeholder="{{trans('content.MESSAGE')}}..."></textarea>
+                        {{Form::textarea('message','',array('required'=>'enable','class'=>'form-control','row'=>'6','placeholder'=>trans('content.MESSAGE').'...'))}}
                     </div>
                 </div>
                 <div class="form-group tpad">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <a data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">{{trans('button.SEND')}}</a>
+                        {{Form::submit(trans('button.SEND'),array('class'=>'btn btn-default btn-lg'))}}
                     </div>
                 </div>
-            </form>
+            {{Form::close()}}
         </div>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -51,11 +54,10 @@
                         <p>The 3Spire Team</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="index.html" class="btn btn-default btn-lg">OK</a>
+                        <a href="#" class="btn btn-default btn-lg">OK</a>
                     </div>
                 </div>
             </div>
-        
         </div>
         <div class="col-sm-3">
             <img class="img-circle img-responsive" src="images/office.jpg">
@@ -68,5 +70,5 @@
             </address>
         </div>
     </div>    
-</div>    
+</div>
 @stop

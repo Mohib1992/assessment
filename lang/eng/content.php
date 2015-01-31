@@ -20,6 +20,7 @@ return array(
 	'TEL' => 'Tel',
 	'MAIL' => 'Mail' ,
 	'EMAIL' => 'Email',
+	'YOUR_EMAIL' => 'You Email',
 	'GET_IN_TOUCH' => 'Get In Touch',
 	'MESSAGE' => 'Message',
 	'SEND'  => 'Send',

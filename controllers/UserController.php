@@ -9,7 +9,7 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('login.edit')->with('user',Auth::user());
 	}
 
 
@@ -65,21 +65,30 @@ class UserController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
 		//
-	}
+		$rules = array(
+			'email'    => 'required|email',
+			'password' => 'required|',
+			'conform_password'=> 'same:password'
+		);
 
+		$validator = Validator::make(Input::all(), $rules);
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		if ($validator->fails()) {
+			return Redirect::to('admin/user')
+				->withErrors($validator) // send back all errors to the login form
+				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+		} else {
+				$user = User::find(Input::get('id'));
+				$user->email = Input::get('email');
+				$user->password = Hash::make(Input::get('password'));
+				$user->save();
+
+				Session::flash('message', 'User data update Successfully!');
+				return Redirect::intended('admin/user');
+		}
 	}
 
 	/**
@@ -87,10 +96,33 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function logIn()
+	public function login()
 	{
-		//
-		echo "you are loged in";
+		$rules = array(
+			'email'    => 'required|email',
+			'password' => 'required|'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if ($validator->fails()) {
+			return Redirect::to('admin/login')
+				->withErrors($validator) // send back all errors to the login form
+				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+		} else {
+
+			// create our user data for the authentication
+			$userdata = array(
+				'email'     => Input::get('email'),
+				'password'  => Input::get('password')
+			);
+
+			if (Auth::attempt($userdata)) {
+				return Redirect::intended('admin/');
+			} else {
+				return Redirect::to('admin/login')->with('flash_message','Invalid Credential')->withInput();
+			}
+		}
 	}
 	
 	/**
@@ -100,7 +132,8 @@ class UserController extends \BaseController {
 	 */
 	public function logOut()
 	{
-		//
+		Auth::logout();
+		return Redirect::to('/');
 	}
 
 }

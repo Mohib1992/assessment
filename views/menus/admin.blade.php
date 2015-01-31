@@ -8,5 +8,7 @@
 	 	{{--{{ HTML::link('/admin/post','Post',array('class'=>'list-group-item')) }}--}}
 	 	{{ HTML::link('/admin/page','Page',array('class'=>'list-group-item')) }}
 	    {{ HTML::link('/admin/menu','Menu',array('class'=>'list-group-item')) }}
+		{{ HTML::link('/admin/user','User',array('class'=>'list-group-item')) }}
+		{{ HTML::link('/admin/logout','Logout',array('class'=>'list-group-item')) }}
 	</div>
 </div>

@@ -20,6 +20,11 @@ class CreateUserTable extends Migration {
 			$table->string('role');
 			$table->timestamps();
 		});
+
+		Schema::create('user',function($table){
+
+			$table->renameColumn('role','remember_token');
+		});
 	}
 
 	/**
